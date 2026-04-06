@@ -1,0 +1,52 @@
+# Preface {.unnumbered}
+
+This is a book about doing mathematics with a computer. It is an invitation and an opportunity for students and teachers to leverage computing to experiment, explore, and connect with mathematics.
+
+## Computing and Experimental Mathematics
+
+**Experimental mathematics** is an empirical approach to mathematics that involves numerical investigations and often leverages computing to explore mathematical objects, discover patterns, and construct insights. @Borwein2025 describe experimental mathematics in education as:
+
+> a student-centred, instructor-moderated, (usually) computationally-assisted approach in teaching and learning mathematics that utilizes modern technology [...]
+
+Experimental mathematics is sometimes contrasted with rigorous proof, but these really are not opposite ends of a spectrum, rather experimentation and proof are pillars of mathematical progress. Observation and experiment offer new avenues of research and even inspire whole branches of mathematics  [@EpsteinLevy2001]. Practices of experimental mathematics are fundamental to the learning of mathematics [@BebermanMeserve1956; @Zoet1969]. 
+
+We cannot just tell students how to do mathematics. We aim also to facilitate experiencing mathematics while developing technical skill. We might consider the antithesis of experimental mathematics to be discovery-avoidance, never visiting the boundaries of understanding and certainly never pushing beyond them. Seymour Papert, prominent proponent of computing in education, shared in *Mindstorms* [-@papert1980mindstorms, pp. 4]:
+
+>"In my vision, the child programs the computer and, in doing so, both acquires a sense of mastery over a piece of the most modern and powerful technology and establishes an intimate contact with some of the deepest ideas from science, from mathematics, and from the art of intellectual model building."
+
+In describing an experimental component of mathematics [-@papert1980mindstorms, pp. 195], he observes:
+
+>"Mathematical work does not proceed along the narrow logical path of truth to truth to truth, but bravely or gropingly follows deviations through the surrounding marshland of propositions which are neither simply and wholly true nor simply and wholly false.
+
+The 1984 NCTM Yearbook *Computers in Mathematics Education* [-@nctm1984] was a collection of essays on the challenges, promises, and practical uses of computing in mathematics education. In the same year, a report on a special conference on *The Impact of Computing Technology on School Mathematics* [@nctm1984report] laid out recommendations for integrating computing from elementary through high school. The report contains several interesting observations about mathematics education generally, with a clear opinion that mathematics education is too focused on obsolete low-level calucations in preparation for calculus-by-hand. This opinion has been regularly expressed for decades [@Berry2019]. The authors of the NCTM report describe an environment of mathematical exploration:
+
+> In many topics of high school mathematics, computers and calculators can be used to discover and test principles and methods. For example, concepts and theorems can be illustrated numerically and graphically to develop sound understanding before formal proof is attempted.
+
+Within a series of suggestions which sound like they could be referring to "AI", the authors suggest:
+
+> Teachers must become effective catalysts for student-directed learning. They must be able to pose stimulating problems and to probe student understanding with questions that begin "What would happen if ..."
+
+The heart of this book is a resound of NCTM's observation back then:
+
+> For students, the greatest promise and challenge of technology in mathematics learning is the move toward more self-directed and self-monitored learning. Students must become adept at using computer-based instructional materials, mathematical tool software, and personal programming skills to develop and practice the use of mathematical concepts, principles, and problem-solving processes. 
+
+Mathematics is not just about computing, and mathematical learning should not involve self-directed floundering. Rather, computing is such a profound component of modern mathematics that it is truly indefensible that we do not teach it. In teaching computing, we hand students a fantastic power to explore and expand their mathematical curiosities in meaningful ways. This is an old idea, but one we have yet failed to realize.  
+
+In the late 1980s and early 1990s, chaos theory saw mainstream popularity [@gleick1988chaos; @crichton1990jurassic] thanks in great part to beautiful computer visualizations of fractals. Fantastic work, much of it supported by NCTM, was done to develop resources that saught to expose students to ideas of recursion and algorithmic problem solving [@fractalsfortheclassroom1;@fractalsfortheclassroom2], dynamical systems and chaos [@devaney1990; @devaney1992], and topics in discrete mathematics broadly [@nctm1991]. Benoit Mandelbrot, of fractal fame, wrote in the forward to *Fractals for the Classroom* [@fractalsfortheclassroom1]:
+
+> *Applied mathematics* has always been permeated with science, hence with experiment. This feature greatly contributed to its being thoroughly unpopular with those believing that applied mathematics is bad mathematics. But *experimental mathematics* means something different: it means injecting experiment back into core parts of mathematics that need not -- at least at present -- have any contact with science. 
+
+In observing the impact that computing had on reinvigorating experimental mathematics and supporting mathematical proof, Mandelbrot draws a comparison with experimental and theoretical physics, noting that computational tools "may well lead to a new equilibrium and to changes in the prevailing styles of completed mathematical proof..." [-@fractalsfortheclassroom1, pp. 2]. He goes on:  
+
+> In other words, we may well be witnessing the re-emergence of a new active 'doublet' of an experimental and/or theoretical study. Experimental and theoretical physicists seldom live in perfect harmony, but they know they *must* not only coexist, but actually listen to each other and otherwise interact. 
+
+Terence Tao, in his talk *Machine-Assisted Proofs* [-@Tao2025MachineAssistedProofs, 2:54] echos Mandelbrot more than three decades later when he observes that: "there has long been a tradition of experimental mathematics...", but that it is "honestly not as well respected as it should be compared to theoretical mathematics". He continues, in the full spirit of Mandelbrot, that "I do feel like in the future, we're going to have much more balance between theory and experiment, closer to how it is in the other sciences."
+
+Epstein and Levy, founders of the *Journal of Experimental Mathematics*, pointed out in NCTM's *Mathematics Teacher* in 2001 that "Mathematics is integrally connected with other fields" [-@EpsteinLevy2001]. Indeed, it has long been the case that "A majority of those who make extensive use of mathematics do so by means of a computer" [@Zoet1969]. Epstein and Levy also recognize that "increasingly, research mathematicians use computers to do their research", and point to results in pure mathematics that were obtained through computing. 
+
+## 
+© Copyright 2025.
+
+[![Creative Commons License](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).

@@ -1,0 +1,179 @@
+# Variables
+
+A variable is a way of naming a value that can be stored and referenced later.
+
+
+## Assignment versus Equality
+
+In mathematics, the equals sign, \(=\), means something profound. It is a statement that the left-hand expression is equal to the right-hand expression.  
+
+In programming, the equals sign is used to assign a value to a variable. The syntax for this is: 
+```python
+variable_name = value
+```
+where the variable name must be on the left-hand side. The expression 
+```python
+x = 22.7
+```
+*assigns* the value of 22.7 to the variable `x`. While this looks a lot like an equation, it is an *assignment*. This is a subtle distinction which can cause a lot of confusion later on if you are not aware of it. In @sec-logical-if, we will see how to test `if` two expressions are equal. 
+
+
+
+## Variables 
+ When we enter commands into Python, and later when we write scripts, the code is interpreted from top to bottom. Consider the sequence of commands below: 
+```python
+a = -3
+b = 15
+print( a*b )   # Prints -45
+
+b = -6
+print( a*b )   # Prints 18
+```
+The first line creates a variable called `a` and assigns it the value $-3$. The second line creates a variable called `b` and assigns it the value $15$. The expression `a*b` is then evaluated with those values of `a` and `b`. When we enter `b = -6` on the next line, we are overwriting the value of `b` to now be $-6$ instead of $15$. Finally, the second execution of `a*b` results in $18$ reflecting the updated value of `b`. 
+
+Variables are particularly useful when plugging values into formulas. Consider Newton's law of universal gravitation, 
+$$ F = G \frac{m_{1} m_{2}}{r^{2}} $$
+where $F$ is the force of gravity between masses $m_{1}$ and $m_{2}$ separated by a distance $r$, and $G$ is Newton's constant of gravitation. Anyone who has plugged into this formula while taking physics knows how combersome of a calculation this can be, particularly when dealing with scientific notation on a calculator. Let's calculate the force of gravity between a mass of 32000 kg and a mass of 250000 kg that are separated by 50 meters. 
+```{python}
+m1 = 32000
+m2 = 250000
+r = 50
+G = 6.67 * 10**-11
+F = G*m1*m2/r**2
+print(F)
+```
+
+## Iterating with Variables
+
+Variables can be overwritten to update their value. This is convenient for algorithms that *iterate*, repeating some process over and over.
+
+Consider the ancient algorithm for calculating the square root of a number. Given a number $n$ that we want to find the square root of, we start with a first guess $g_1$. We then improve our guess to get $g_2$ with:
+$$g_2 = \frac{g_1 + \frac{n}{g_1}}{2}$$ 
+We then get an improved third guess with
+$$g_3 = \frac{g_2 + \frac{n}{g_2}}{2}$$
+This calculation pattern continues so that 
+$$g_{i+1} = \frac{g_i + \frac{n}{g_i}}{2}$$
+
+Let's use this pattern to find the square root of $2800$, using only one guess variable, `g`, and overwriting our guess as we go: 
+```{python}
+n = 2800
+g = 100
+g = (g+n/g)/2
+print(g)
+```
+```{python}
+g = (g+n/g)/2
+print(g)
+```
+```{python}
+g = (g+n/g)/2
+print(g)
+```
+```{python}
+g = (g+n/g)/2
+print(g)
+```
+```{python}
+g = (g+n/g)/2
+print(g)
+```
+Our guess `g` is converging quickly. We can define a *stopping condition* to be when the difference between adjacent guesses is smaller than some threshold. Depending on what we are calculating, 52.91502622129182 might just be "good enough"!
+
+## Strings
+Numbers are one type of value that we can store. We can also store **strings** of characters. 
+```{python}
+greeting = "Good day!"
+print( greeting )
+```
+Note that strings are defined between quotes. Common errors include neglecting quotes around strings or putting quotes around variables which are not strings. 
+
+We often *concatenate* (connect together) two or more strings. For example, we can combine multiple variables into a single message with:
+
+```{python}
+greeting = "Hello"
+name = "Atticus"
+print( greeting + name )
+```
+
+The `+` symbol here is not acting like addition of numbers, rather it is concatenating the string `"Hello"` together with the string `Atticus`.
+
+There are many useful string methods, some of which are: 
+
+| Python            | Description                | Example                     | Result    |
+|-------------------|----------------------------|-----------------------------|-----------|
+| `len(s)`          | Length of a string         | `len("hello")`              | `5`       |
+| `s.lower()`       | Convert to lowercase       | `"HELLO".lower()`           | `"hello"` |
+| `s.upper()`       | Convert to uppercase       | `"hello".upper()`           | `"HELLO"` |
+| `s.replace(a, b)` | Replace a substring        | `"cat".replace("c","b")`    | `"bat"`   |
+| `s.count(x)`      | Occurrences of substring   | `"Mississippi".count("ss")` | `2`       |
+
+## Type 
+
+`type` is a built-in function that returns the *type* of the object passed to it. Some of the basic types we've seen include:
+
+| Value  | Type   | Description                     | 
+|--------|--------|---------------------------------|
+| 42     | int    | Integer (whole number)          |
+| 2.718  | float  | Floating point (decimal number) |
+| "Data"   | str    | String of characters            | 
+
+Experiment by making new variables with integers, floats, and strings and calling the function `type`:
+```{python}
+num = 3.14159
+type(num)
+```
+```{python}
+name = "Atticus"
+type(name)
+```
+
+
+## User Input 
+
+We can prompt the user for input with the `input()` function. Even better, we can store that input in a variable. 
+```python
+user_name = input("Enter your name: ")
+print("Hello " + user_name)
+```
+The first line accomplishes multiple things. It prints the string `"Enter your name: "`, waits for the user to type something and press [Enter], and finally stores the user's input in the variable called `user_name`. Then next line concatinates `"Hello "` with the user's input and the prints the result.
+
+Something interesting happens if we prompt the user for a number. Try the following:
+```python
+user_number = input("Enter your favorite number: ") 
+type(user_number)
+```
+You will see that `user_number` has type `<class 'str'>`. The user's input is stored as a string of characters, not a number. This means that you can use it like a string, but you cannot do math with it, yet. You can change a number from a `string` to a `int` or `float`. For example, the following should work as long as the user enters a valid number: 
+```python 
+user_number = input("Enter your favorite number: ") 
+actual_number = float(user_number)   # Convert the number from str to float
+twice = 2 * actual_number            # Double the number
+print( "Your number doubled is: " + str(twice) )
+```
+Note that we converted the number `twice` back to a `str` to be able to concatenate it with another string for printing. 
+
+## Exercises{.unnumbered} 
+
+1. Coulomb's Law calculates the force between two charges $q_1$ and $q_2$ separated by a distance $d$:
+    $$F_e = k \frac{q_1 q_2}{d^2}$$
+    where $k = 9 \cdot 10^9$ is a constant. Using variables, calculate the force between a charge of 0.3 C separated by 345 m from a charge of 0.08 C. 
+
+2. Use the square root algorithm: $$g_{i+1} = \frac{g_i + \frac{n}{g_i}}{2}$$
+
+     with an initial guess of $g_0=10$, to find the approximation $g_5$ for the following values:
+     a. $\sqrt{64}$
+     b. $\sqrt{63}$
+     c. $\sqrt{99}$
+     d. $\sqrt{200}$
+     e. $\sqrt{1000000}$
+     
+
+3. Use the `input()` function to prompt the user for two numbers, `a` and `b`, then print out the product and ratio of those two numbers.
+
+    *Hint*: The `input()` function returns a string, so you will have to convert that string to a float so it can be used in a calculation.
+
+4. Using the `input()` function,
+    a. prompt a user for a height in meters, then
+    b. tell them how long it would take for a bowling ball to fall that far when dropped from rest.
+
+    Recall from Physics that:
+    $$\Delta x = v_{i} \Delta t + \frac{1}{2} a \Delta t^{2}$$

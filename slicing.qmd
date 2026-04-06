@@ -1,0 +1,129 @@
+# Slicing Data
+
+**Slicing** is the process of selecting a subset of an array.
+
+## Slicing in 1-D
+
+Given a 1-D NumPy array named `vec`, the syntax to select a range of indices is:
+$$\text{vec} [\text{start} : \text{stop} : \text{step}]$$
+where $\text{start}$ is the starting index, $\text{stop}$ is the *excluded* stopping index, and $\text{step}$ is an incriment. Consider the array:
+```python 
+vec = np.array([10, 20, 30, 40, 50, 60, 70, 80])
+``` 
+which has the structure: 
+
+<p align="center">  <img src="img/vec.png" width="500"></p> 
+
+The following examples are slices of `vec`:
+
+| Slice        | Result                 | Description                                |
+|--------------|------------------------|--------------------------------------------|
+| `vec[1:4]`   | `[20, 30, 40]`         | Elements from index 1 up to 4 (excluded)   |
+| `vec[:3] `   | `[10, 20, 30]`         | Elements up to index 3 (excluded)          |
+| `vec[3:] `   | `[40, 50, 60, 70, 80]` | Elements from index 3 to the end           |
+| `vec[1:5:3]` | `[20, 50]`             | From index 1 to 5 (excluded) skipping by 3 |
+| `vec[2::2] ` | `[30, 50, 70]`         | Elements from 2 to the end, skipping by 2  |
+
+### Specifying Indices {.unnumbered}
+We are not constrained to selecting only sequenced elements from an array. We can select arbitrary elements by passing a list of which indices we want to select:
+```{python}
+import numpy as np
+vec = np.array([10, 20, 30, 40, 50, 60, 70, 80])
+vec[ [1,5,6] ]
+```
+
+
+## Negative Indices 
+
+Negative indices count backwards, so `a[-1]` refers to the last element in `a` and `a[-2]` references the second to last element in `a`. Stepping by $-1$ means moving backwards through an array, so that we can reverse an array with:
+```{python}
+import numpy as np 
+
+vec = np.array([10, 20, 30, 40, 50, 60, 70, 80])
+
+print( vec[::-1] )
+```
+
+
+## Slicing in 2-D
+
+Slicing a 2-D array requires specifying **rows** and **columns**. Consider an array `arr`:
+```{python}
+arr = np.array([[10,  20,  30,  40],
+                [50,  60,  70,  80],
+                [90, 100, 110, 120]])
+```
+which has the structure: 
+<p align="center"><img src="img/arr.png" width="320"></p>
+We can select the middle row by specifying row 1 and using `:` to reprsent "all" columns:
+```{python}
+arr[1,:]
+```
+We can select the last column by specifying any row `:` and column 3:
+```{python}
+arr[:,3]
+```
+or equivilently choosing the last column: 
+```{python}
+arr[:,-1]
+```
+The value of $70$ is located at row 1 column 2, which we can select with:
+```{python}
+arr[1,2]
+```
+Notice that this returns the value $70$ and *not* a subarray containing the value 70. Indexing a single element within an array references the value at that position.
+
+
+## Updating Values 
+
+### Update an element 
+
+Updating the value of a single element
+```{python}
+arr = np.array([[10,  20,  30,  40],
+                [50,  60,  70,  80],
+                [90, 100, 110, 120]])
+
+arr[1,2] = -1
+print(arr)
+```
+
+### Update Rows or Columns 
+
+We can update any row, column or the entire array with the same operations we used in @sec-listsarrays. Given an array `arr`, 
+```{python}
+arr = np.array([[10,  20,  30,  40],
+                [50,  60,  70,  80],
+                [90, 100, 110, 120]])
+arr[2] = arr[2] * 3
+print(arr)                
+```
+
+
+## Graphing Data from Slices
+
+Data will commonly be in array where each row corresponds to a sample and each column is a feature. 
+
+```python
+data = []
+
+```
+
+
+## Exercises{.unnumbered}
+
+1. Use slicing to set all of the non-zero elements of `M` to $1$:
+    
+    ```Python 
+    M =  np.array([[ 0, 0, 0, 0, 0, 0, 0, 0],
+                   [ 0, 0, 1, 7, 0, 0, 0, 0],
+                   [ 0, 0, 4, 3, 0, 0, 0, 0],
+                   [ 0, 0, 9, 2, 0, 0, 0, 0],
+                   [ 0, 0, 0, 0, 0, 0, 0, 0]])
+    ```
+2. Given a 1-D array named `TwoHundo` containing two hundred random digits, write the one line of code that would set every other element of `TwoHundo` equal to $0$, beginning with the second element. Create such an array and demonstrate your working one-liner. 
+
+3. Row operations? 
+
+4. Complete the penguin classifier in this Colab document: [https://colab.research.google.com/drive/1Cb9iHNO1fA4BPO-puaTb7B64V4mf9veC?usp=sharing](https://colab.research.google.com/drive/1Cb9iHNO1fA4BPO-puaTb7B64V4mf9veC?usp=sharing)
+ 

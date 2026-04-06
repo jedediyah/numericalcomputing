@@ -1,0 +1,188 @@
+```{python}
+#| label: setup
+#| include: false
+
+from numpy import sin, cos, tan, sqrt, floor, ceil, pi, gcd
+```
+
+# Calculating
+
+This chapter introduces fundamentals of evaluating mathematical expressions. We also look at built-in functions and functions from Python's `numpy` library.
+
+## Arithmetic Expressions
+
+At the most basic level, you can use Python like a calculator. Syntax for the basic math operations:
+
+| Operation      |   Example    |  Python   |
+| :---           | :---:        | :--:      |
+| Addition       | $5+7$        | `5 + 7`   |
+| Subtraction    | $42-50$      | `42 - 50` |
+| Multiplication | $3\times 8$  | `3 * 8`   |
+| Division       | $64 \div 8$  | `64 / 8`  |
+| Exponentiation | $3^4$        | `3**4`    |
+| Modulo         | $17 \mod 5$  | `17 % 5`  |
+
+I will never forgive Python for using `**` for exponentiation (it would be nice if it were `^`). Alas, we should be using MATLAB anyway. 
+
+Like most programming languages, Python does not have implicit operations. If you want to multiply, you *must* explicitly use the multiplication symbol `*`. For example, `3(4+2)` would generate an error, but `3*(4+2)` will evaluate as expected.
+
+## Error Messages
+
+Errors are useful! They are feedback about something that has gone awry. You might try running a command like this: 
+```python
+"Hello " + 24
+```
+and get the following:
+```python
+Traceback (most recent call last):
+  File "<python-input-1>", line 1, in <module>
+    "Hello " + 24
+    ~~~~~~~~~^~~~
+TypeError: can only concatenate str (not "int") to str
+```
+This message identified a syntax error and even gave a nice hint that we were trying to combine a string of characters with a number. 
+
+Another common error is trying to use a variable we haven't yet defined. For example: 
+```python
+5 * x
+```
+results in: 
+```python
+Traceback (most recent call last):
+  File "<python-input-2>", line 1, in <module>
+    5 * x
+        ^
+NameError: name 'x' is not defined
+```
+
+Some bugs won't result in an error at all and are harder to catch. This could include code that is technically correct but miscalculates, or commands that are out of order. When we start to write longer scripts we will explore debugging and good coding practices. 
+
+## Built-In Functions 
+
+Python has a handful of [built-in](https://docs.python.org/3/library/functions.html) mathematical functions. Some of those functions are:
+
+| Function  | Description                        | Example              | Result  |
+|-----------|------------------------------------|----------------------|---------|
+| `abs()`   | Absolute value                     | `abs(-11)`           | `11`    |
+| `min()`   | Smallest value                     | `min(17,3,8)`        | `3`     |
+| `max()`   | Largest value                      | `max(34, 2, 21)`     | `34`    |
+| `round()` | Round to nearest decimal place     | `round(3.1416, 2)`   | `3.14`  |
+| `pow()`   | Exponentiation                     | `pow(2, 5)`          | `32`    |
+| `int()`   | Convert to integer (truncate)      | `int(2.9)`           | `2`     |
+
+Other functions, such as sine, cosine, and tangent, require a code *library*. 
+
+## Math Functions
+
+A code *library* is a collection of related functions, and a Python library we will often use is called NumPy. To use a function from a library, you first import either the entire library or the individual function(s) you want to use. Try running the following code then editing and re-running it with the different functions. Note that `pi` is the constant $\pi$. 
+```python
+from numpy import sin, cos, tan, sqrt, floor, ceil, pi, gcd
+
+print( sin(-pi/4) )
+```
+Some examples of functions from the `numpy` library:
+
+| Function                |  Example               |  Python        |
+|-------------------------|------------------------|----------------|
+| Square root             | $\sqrt{2}$             | `sqrt(2)`      |
+| Absolute Value          | $|-52|$                | `abs(-52)`     |
+| Round                   | $\lfloor 2.713 \rceil$ | `round(2.713)` |
+| Ceiling (round up)      | $\lceil 3.14 \rceil$   | `ceil(3.14)`   |
+| Floor (round down)      | $\lfloor 3.14 \rfloor$ | `floor(3.14)`  |
+| Greatest Common Divisor | $\gcd(12,68)$          | `gcd(12, 68)`  |
+| Exponential             | $e^{5.2}$              | `exp(5.2)`     |
+| Natural Log             | $\ln(17)$              | `log(17)`      |
+
+The NumPy `log` function returns the natural log. To obtain an alternative base logarith we can use log conversion. For example, $\log_{5}(32)$ can be evaluated in Python as `log(32)/log(5)`. 
+
+### Importing NumPy
+
+In later chapters, we won't import individual funcations as we did above. Instead, will import the entire NumPy library and then use dot notation. For example:
+```{python}
+import numpy as np 
+
+print( np.sin(-np.pi/4) )
+```
+While this is clunky to write and read, it scales as we begin to use more functions from NumPy. If you find it easier to import individual functions, then you go right ahead. 
+
+## Compound Expressions 
+
+Parentheses are our friends! When writing expressions with division, the most common mistake relates to order of operations. Take, for example, the expression: $$\frac{6+4}{2}$$ We write this in Python as: `(6+4)/2`
+
+The mistake involves writing expressions like the one above as `6+4/2` without parentheses, which results in an incorrect answer of $7$ since the division would take precedence over addition. When in doubt, wrap expressions in parentheses to ensure the anticipated order of operations.
+
+Here are some examples of expressions translated into Python:
+
+
+| Expression                                  |  Python              |
+|---------------------------------------------|----------------------|
+| $4-\frac{5}{7}$                             | `4 - 5/7`            |
+| $\frac{4-5}{7}$                             | `(4-5)/7`            |
+| $5-{}^{-}3$                                 | `5-(-3)`             |
+| $\frac{5+3}{5-2}$                           | `(5+3)/(5-2)`        |
+| $5^{\frac{3}{2}}$                           | `5**(3/2)`           |
+| $\frac{17-4}{\frac{5}{3}}$                  | `(17-4)/(5/3)`       |
+| $4+\sqrt{\frac{2}{3+5}}$                    | `4 + sqrt(2/(3+5))`  |
+| $1 - \sin^{2}(0.3)$                         | `1 - sin(0.3)**2`    |
+| $\frac{5}{3}\cos\left(\frac{\pi}{2}\right)$ | `(5/3)*cos(pi/2)`    |
+| $\frac{5}{3\cos\left(\frac{\pi}{2}\right)}$ | `5/(3*cos(pi/2))`    |
+
+Try writing and evaluating the expresion:
+$$\frac{3+\frac{7}{5}}{5+3}$$
+You should get $0.55$.
+
+## Numerical Error
+
+As mentioned in @sec-ieee754, calculating with a computer involves numerical error due in part to the way we represent numbers on a computer. This won't be an issue for us, but it is important to be aware of. Below is a demonstrations of floating-poing error. 
+
+### Sine of $\pi$ {.unnumbered}
+
+The expression $\sin(\pi)$ should evaluate to $0$. However, try the following: 
+```python
+from numpy import sin, pi
+sin(pi)
+```
+and you'll find that Python evaluates `sin(pi)` to `1.2246467991473532e-16`, or $0.00000000000000012246467991473532$ which is quite small but not zero. 
+
+There are two sources of this imprecision. 
+
+1. The value of `pi` from the `numpy` library is stored using 64 bits, a finite level of precision with a value of $3.141592653589793$. That's pretty good for most applications!
+2. The sine function is a numerical approximation. 
+
+<!--
+### Big Square Root {.unnumbered}
+
+For large values of $n$, we know that $\sqrt{n+1} \neq \sqrt{n}$. However, try the following:
+```{python}
+n = 10**16
+sqrt(n+1) - sqrt(n)
+```
+That value shouldn't be zero, and the fact that it is means that we have **lost** information. 
+--> 
+
+Numerical error is a fascinating and important topic [@heath2018scientific], but from here on out we will completely ignore it. 
+
+## Exercises {.unnumbered}
+
+Write the following arithmetic expressions in Python and print the results.
+
+:::: columns
+::: column
+a. $$5 + 18$$
+b. $$\sqrt{3^2+4^2}$$
+c. $$\frac{10+16}{5-3}$$
+d. $$\frac{\sqrt{2}}{2}$$
+e. $$\frac{32}{7}$$
+f. $$\frac{\sqrt{3}-\frac{1}{2}}{3+\sqrt{5}}$$
+g. $$\frac{4}{5} \times 8$$
+:::
+::: column
+h. $$\sqrt{5+\sqrt{3}}$$
+i. $$\frac{3+5 \times 7}{6}$$
+j. $$\frac{\sin^{2}\left(\frac{1}{2}\right)}{1-\cos\left(\frac{1}{2}\right)}$$
+k. $$\frac{12-7}{4+8}$$
+l. $$\frac{\frac{3}{4}+2}{1+2}$$
+m. $$|\lfloor -3.14 \rfloor |$$
+n. $$e^{\ln \left( \gcd(24,32) \right) }$$
+:::
+::::

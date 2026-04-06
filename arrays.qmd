@@ -1,0 +1,508 @@
+Printed copies of *Elements of Data Science* are available now, with a **full color interior**, from [Lulu.com](https://www.lulu.com/shop/allen-downey/elements-of-data-science/paperback/product-9dyrwn.html).
+
+# Lists and Arrays
+
+[Click here to run this notebook on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/v1/03_arrays.ipynb).
+
+
+```python
+from os.path import basename, exists
+
+def download(url):
+    filename = basename(url)
+    if not exists(filename):
+        from urllib.request import urlretrieve
+
+        local, _ = urlretrieve(url, filename)
+        print("Downloaded " + str(local))
+    return filename
+
+download('https://github.com/AllenDowney/ElementsOfDataScience/raw/v1/utils.py')
+
+import utils
+```
+
+In the previous chapter we used tuples to represent latitude and longitude.  In this chapter, we'll use tuples more generally to represent a sequence of values.
+And we'll see two more ways to represent sequences: lists and arrays.
+
+You might wonder why we need three ways to represent the same thing.
+Most of the time we don't, but each of them has different capabilities.
+For work with data, we will use arrays most of the time.
+
+As an example, we will use a small dataset from an article in *The Economist* about the price of sandwiches.
+It's a silly example, but I'll use it to introduce relative differences and ways to summarize them.
+
+## Tuples
+
+A tuple is a sequence of elements.
+When we use a tuple to represent latitude and longitude, the sequence only contains two elements, and they are both floating-point numbers.
+But in general a tuple can contain any number of elements, and the elements can be values of any type.
+For example, here's a tuple of two strings.
+
+
+```python
+('Data', 'Science')
+```
+
+The elements don't have to be the same type.
+Here's a tuple with a string, an integer, and a floating-point number.
+
+
+```python
+('one', 2, 3.14159)
+```
+
+When you create a tuple, the parentheses are optional, but the commas are required.
+So how do you think you create a tuple with a single element?
+You might be tempted to write:
+
+
+```python
+x = (5)
+x
+```
+
+
+```python
+type(x)
+```
+
+But you will find that the result is just a number, not a tuple.
+To make a tuple with a single element, you need a comma:
+
+
+```python
+t = (5,)
+t
+```
+
+That might look funny, but it does the job.
+
+
+```python
+type(t)
+```
+
+If you have a string, you can convert it to a tuple using the `tuple` function:
+
+
+```python
+tuple('DataScience')
+```
+
+The result is a sequence of single-character strings.
+You can also use the `tuple` function to make an empty tuple -- that is, one that has no elements.
+
+
+```python
+tuple()
+```
+
+## Lists
+
+Python provides another way to store a sequence of elements: a **list**.
+To create a list, you put a sequence of elements in square brackets.
+
+
+```python
+[1, 2, 3]
+```
+
+Lists and tuples are very similar.
+They can contain any number of elements, the elements can be any type, and the elements don't have to be the same type.
+The difference is that you can modify a list and you can't modify a tuple -- that is, tuples are **immutable**.
+This difference will matter later, but for now we can ignore it.
+
+When you make a list, the brackets are required, but if there is a single element, you don't need a comma.
+So you can make a list like this:
+
+
+```python
+single = [5]
+```
+
+
+```python
+type(single)
+```
+
+It is also possible to make a list with no elements, like this:
+
+
+```python
+empty = []
+```
+
+
+```python
+type(empty)
+```
+
+The `len` function returns the length (number of elements) in a list or tuple.
+
+
+```python
+len([1, 2, 3]), len(single), len(empty)
+```
+
+There's more we could do with lists, but that's enough to get started.
+In the next section, we'll use lists to store data about sandwich prices.
+
+**Exercise:** Create a list with 4 elements. Then use `type` to confirm that it's a list, and `len` to confirm that it has 4 elements.
+
+
+```python
+# Solution goes here
+```
+
+
+```python
+# Solution goes here
+```
+
+
+```python
+# Solution goes here
+```
+
+## Sandwich Prices
+
+In September 2019, *The Economist* published an article comparing sandwich prices in Boston and London, called "Why Americans pay more for lunch than Britons do".
+
+You can read the article at <https://www.economist.com/finance-and-economics/2019/09/07/why-americans-pay-more-for-lunch-than-britons-do>.
+
+It includes this graph showing prices of several sandwiches in the two cities:
+
+<img src="https://github.com/AllenDowney/ElementsOfDataScience/raw/v1/figs/20190907_FNC941.png"  width="300">
+
+![](https://github.com/AllenDowney/ElementsOfDataScience/raw/v1/figs/20190907_FNC941.png)
+
+Here are the sandwich names from the graph, as a list of strings.
+
+
+```python
+name_list = [
+    'Lobster roll',
+    'Chicken caesar',
+    'Bang bang chicken',
+    'Ham and cheese',
+    'Tuna and cucumber',
+    'Egg'
+]
+```
+
+I contacted *The Economist* to ask for the data they used to create that graph, and they were kind enough to share it with me.
+Here are the sandwich prices in Boston:
+
+
+```python
+boston_price_list = [9.99, 7.99, 7.49, 7.00, 6.29, 4.99]
+```
+
+Here are the prices in London, converted to dollars at \$1.25 / £1.
+
+
+```python
+london_price_list = [7.5, 5, 4.4, 5, 3.75, 2.25]
+```
+
+Lists provide some arithmetic operators, but they might not do what you want.
+For example, the `+` operator works with lists:
+
+
+```python
+boston_price_list + london_price_list
+```
+
+But it concatenates the two lists, which is not very useful in this example.
+To compute differences between prices, you might try subtracting lists, but it doesn't work.
+
+
+```python
+%%expect TypeError
+
+boston_price_list - london_price_list
+```
+
+We can solve this problem with NumPy.
+
+## NumPy Arrays
+
+We've already seen that the NumPy library provides math functions.
+It also provides a type of sequence called an **array**.
+You can create a new array with the `np.array` function, starting with a list or tuple.
+
+
+```python
+import numpy as np
+
+boston_price_array = np.array(boston_price_list)
+london_price_array = np.array(london_price_list)
+```
+
+The type of the result is `numpy.ndarray`.
+
+
+```python
+type(boston_price_array)
+```
+
+The "nd" stands for "n-dimensional", which indicates that NumPy arrays can have any number of dimensions.
+But for now we will work with one-dimensional sequences.
+If you display an array, Python displays the elements:
+
+
+```python
+boston_price_array
+```
+
+You can also display the **data type** of the array, which is the type of the elements:
+
+
+```python
+boston_price_array.dtype
+```
+
+`float64` means that the elements are floating-point numbers that take up 64 bits each.
+The elements of a NumPy array can be any type, but they all have to be the same type.
+Most often the elements are numbers, but you can also make an array of strings.
+
+
+```python
+name_array = np.array(name_list)
+name_array
+```
+
+In this example, the `dtype` is `<U17`.  The `U` indicates that the elements are Unicode strings.
+Unicode is the standard Python uses to represent strings.
+The number `17` is the length of the longest string in the array.
+
+Now, here's why NumPy arrays are useful -- they can do arithmetic.
+For example, to compute the differences between Boston and London prices, we can write:
+
+
+```python
+differences = boston_price_array - london_price_array
+differences
+```
+
+Subtraction is done **elementwise** -- that is, NumPy lines up the two arrays and subtracts corresponding elements.
+The result is a new array.
+
+## Statistical Summaries
+
+NumPy provides functions that compute statistical summaries like the mean:
+
+
+```python
+np.mean(differences)
+```
+
+So we could describe the difference in prices like this: "Sandwiches in Boston are more expensive by \$2.64, on average".
+We could also compute the means first, and then compute their difference:
+
+
+```python
+np.mean(boston_price_array) - np.mean(london_price_array)
+```
+
+And that turns out to be the same thing -- the difference in means is the same as the mean of the differences.
+As an aside, many of the NumPy functions also work with lists, so we could also do this:
+
+
+```python
+np.mean(boston_price_list) - np.mean(london_price_list)
+```
+
+**Exercise:** Standard deviation is way to quantify the variability in a set of numbers.  The NumPy function that computes standard deviation is `np.std`.
+
+Compute the standard deviation of sandwich prices in Boston and London.  By this measure, which set of prices is more variable?
+
+
+```python
+# Solution goes here
+```
+
+## Relative Difference
+
+In the previous section we computed differences between prices.
+But often when we make this kind of comparison, we are interested in **relative differences**, which are differences expressed as a fraction or percentage of a quantity.
+Taking the lobster roll as an example, the difference in price is:
+
+
+```python
+9.99 - 7.5
+```
+
+We can express that difference as a fraction of the London price, like this:
+
+
+```python
+(9.99 - 7.5) / 7.5
+```
+
+Or as a *percentage* of the London price, like this:
+
+
+```python
+(9.99 - 7.5) / 7.5 * 100
+```
+
+So we might say that the lobster roll is 33% more expensive in Boston.
+But putting London in the denominator was an arbitrary choice.  We could also compute the difference as a percentage of the Boston price:
+
+
+```python
+(9.99 - 7.5) / 9.99 * 100
+```
+
+If we do that calculation, we might say the lobster roll is 25% cheaper in London.
+When you read this kind of comparison, you should make sure you understand which quantity is in the denominator, and you might want to think about why that choice was made.
+In this example, if you want to make the difference seem bigger, you might put London prices in the denominator.
+
+If we do the same calculation with the arrays of prices, we can compute the relative differences for all sandwiches:
+
+
+```python
+differences = boston_price_array - london_price_array
+relative_differences = differences / london_price_array
+relative_differences
+```
+
+And the percent differences.
+
+
+```python
+percent_differences = relative_differences * 100
+percent_differences
+```
+
+## Summarizing Relative Differences
+
+Now let's think about how to summarize an array of percentage differences.
+One option is to report the range, which we can compute with `np.min` and `np.max`.
+
+
+```python
+np.min(percent_differences), np.max(percent_differences)
+```
+
+The lobster roll is only 33% more expensive in Boston; the egg sandwich is 121% percent more (that is, more than twice the price).
+
+**Exercise:** What are the percent differences if we put the Boston prices in the denominator?  What is the range of those differences?  Write a sentence that summarizes the results.
+
+
+```python
+# Solution goes here
+```
+
+
+```python
+# Solution goes here
+```
+
+
+```python
+# Solution goes here
+```
+
+Another way to summarize percentage differences is to report the mean.
+
+
+```python
+np.mean(percent_differences)
+```
+
+So we might say that sandwiches are 65% more expensive in Boston, on average.
+But another way to summarize the data is to compute the mean price in each city, and then compute the percentage difference of the means:
+
+
+```python
+boston_mean = np.mean(boston_price_array)
+london_mean = np.mean(london_price_array)
+
+(boston_mean - london_mean) / london_mean * 100
+```
+
+Based on this calculation we might say that the average sandwich price is 56% higher in Boston.
+As this example demonstrates:
+
+* With relative and percentage differences, the mean of the differences is not the same as the difference of the means.
+
+* When you report data like this, you should think about different ways to summarize the data.
+
+* When you read a summary of data like this, make sure you understand what summary was chosen and what it means.
+
+In this example, I think the second option (the relative difference in the means) is more meaningful, because it reflects the difference in price between "baskets of goods" that include one of each sandwich.
+
+## Debugging
+
+So far, most of the exercises have only required a few lines of code.
+If you made errors along the way, you probably found them quickly.
+
+As we go along, the exercises will be more substantial, and you may find yourself spending more time debugging.
+Here are a couple of suggestions to help you find errors quickly -- and avoid them in the first place.
+
+* Most importantly, you should develop code incrementally -- that is, you should write a small amount of code and test it.  If it works, add more code; otherwise, debug what you have.
+
+* Conversely, if you have written too much code, and you are having a hard time debugging it, split it into smaller chunks and debug them separately.
+
+For example, suppose you want to compute, for each sandwich in the sandwich list, the midpoint of the Boston and London prices.
+As a first draft, you might write something like this:
+
+
+```python
+boston_price_list = [9.99, 7.99, 7.49, 7, 6.29, 4.99]
+london_price_list = [7.5, 5, 4.4, 5, 3.75, 2.25]
+
+midpoint_price = np.mean(boston_price_list + london_price_list)
+midpoint_price
+```
+
+This code runs, and it produces an answer, but the answer is a single number rather than the list we were expecting.
+
+You might have already spotted the error, but let's suppose you did not.
+To debug this code, I would start by splitting the computation into smaller steps and displaying the intermediate results.
+For example, we might add the two lists and display the result, like this.
+
+
+```python
+total_price = boston_price_list + london_price_list
+total_price
+```
+
+Looking at the result, we see that it did not add the sandwich prices elementwise, as we intended.
+Because the arguments are lists, the `+` operator concatenates them rather than adding the elements.
+We can solve this problem by using the arrays rather than the lists.
+
+
+```python
+total_price_array = boston_price_array + london_price_array
+total_price_array
+```
+
+And then computing the midpoint of each pair of prices, like this:
+
+
+```python
+midpoint_price_array = total_price_array / 2
+midpoint_price_array
+```
+
+As you gain experience, you will be able to write bigger chunks of code before testing.  But while you are getting started, keep it simple!
+As a general rule, each line of code should perform a small number of operations, and each cell should contain a small number of statements.
+
+## Summary
+
+This chapter presents three ways to represent a sequence of values: tuples, lists, and Numpy arrays.
+Working with data, we will primarily use arrays.
+
+It also introduces three ways to represent differences: absolute, relative, and percentage -- and several ways to summarize a set of values: minimum, maximum, mean, and standard deviation.
+
+In the next chapter we'll start working with data files, and we'll use loops to process letters and words.
+
+*Elements of Data Science*
+
+Copyright 2021 [Allen B. Downey](https://allendowney.com)
+
+License: [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/)

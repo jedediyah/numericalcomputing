@@ -1,0 +1,14 @@
+# Looping
+
+## For 
+
+## Revisiting Square Root 
+
+Halting condition. 
+
+## Random Walks
+
+## Dynamical Systems 
+
+
+## Exercises

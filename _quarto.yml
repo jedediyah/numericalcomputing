@@ -1,0 +1,50 @@
+project:
+  type: book
+
+book:
+  title: "Numerical Computing"
+  author:
+  - name: Jedediyah Williams<br>jedediyah@gmail.com
+    email: jedediyah@gmail.com
+
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - arithmetic.qmd
+    - variables.qmd
+    - listsarrays.qmd
+    - graphingdata.qmd
+    - sequentsum.qmd
+    - graphingsequences.qmd
+    - slicing.qmd
+    - dataframes.qmd
+    - regression.qmd
+    - logic.qmd
+    - classification.qmd
+    - looping.qmd
+    - random.qmd
+    - vision.qmd
+    # - glossary.qmd
+    - references.qmd
+  sidebar:
+    logo: "Figure_4.png"
+  favicon: cover.png
+
+bibliography: references.bib
+csl: https://www.zotero.org/styles/chicago-author-date
+
+format:
+  html:
+    # css: styles.css
+    fig-width: 6
+    fig-height: 4
+    fig-responsive: true
+    title-block-style: none
+    theme:
+      - cosmo 
+      - pandoc
+  pdf:
+    documentclass: scrreprt 
+    toc: true
+    toc-depth: 2
+

@@ -1,0 +1,124 @@
+# Lists and Arrays {#sec-listsarrays}
+
+There are several important data structures useful for storing and operating on data. Here, we will look at **lists** and NumPy **arrays**.  They have several simarilities, but are fundamentally different. The most important difference is that NumPy arrays are optimized for doing mathematics far more efficiently than can be done with lists. 
+
+## List 
+
+A **list** is exactly what it sounds like, an ordered sequence of items. Often, these items will be numbers: 
+```python 
+my_lst = [42, 5, 17, 88]
+```
+but a list can contain anything, including other lists:
+```python
+big_lst = [42, 5, ["hello", 3.14159, "My number is"], "Five", 88]
+```
+
+Let's back up a minute. When we run the following line of code: 
+```python 
+lst = [10, 20, 30, 40, 50, 60, 70, 80]
+```
+we are creating a variable called `lst` which as the following structure:
+
+<p align="center">  <img src="img/lst_indices.svg" width="480"></p> 
+Each **element** in the list has an **index** (numbers below the list) starting with $0$ which represents its position in the list. We reference elements by their index, e.g., the element at index 3 is $40$. 
+```{python}
+lst = [10, 20, 30, 40, 50, 60, 70, 80]
+lst[3]
+```
+Notice that we used the square brackets to create the list, and we use them to reference elements in the list. Referencing an element can be used to access an element or update its value: 
+```{python}
+lst = [10, 20, 30, 40, 50, 60, 70, 80]
+lst[3] = -1
+print( lst )
+```
+
+## NumPy Array
+
+NumPy arrays can look a lot like lists. We can even use lists when creating an array: 
+```{python}
+import numpy as np 
+
+arr = np.array( [10, 20, 30, 40, 50, 60, 70, 80] )
+```
+This array has the following structure: 
+
+<p align="center">  <img src="img/arr_indices.svg" width="480"></p> 
+
+and referencing arrays works exactly the same as with lists: 
+```{python}
+arr = np.array( [10, 20, 30, 40, 50, 60, 70, 80] )
+arr[3] = -1
+print( arr )
+```
+The primary difference between lists and NumPy arrays is that arrays have been optimized to be able to do mathematical calculations much faster than lists. 
+
+Some of the similar tasks with lists and arrays include: 
+
+| Task            | Python List        | NumPy Array                     |
+|:----------------|:-------------------|:--------------------------------|
+| Create          | `lst = [1,2,3,4]`  | `arr = np.array([1,2,3,4])`     |
+| Length          | `len(lst)`         | `len(arr)`                      |
+| Index element   | `lst[2]`           | `arr[2]`                        |
+| Append element  | `lst.append(5)`    | `arr = np.append(arr, 5)`       |
+| Concatenate     | `lst1 + lst2`      | `np.concatenate((arr1, arr2))`  |
+| Sum of elements | `sum(lst)`         | `np.sum(arr)`                   |
+| Sort elements   | `sorted(lst)`      | `np.sort(arr)`                  |
+
+
+## NumPy Summary Statistics
+
+NumPy arrays will often contain data. We can find summary statistics for an array with:
+```python
+arr = np.array([1, 2, 3, 4, 5])
+
+np.min(arr)       # 1
+np.max(arr)       # 5
+np.sum(arr)       # 15
+np.mean(arr)      # 3.0
+np.std(arr)       # 1.4142135623730951
+```
+
+## Random
+
+NumPy has a `random` module for generating pseudorandom numbers (numbers that appear to be random). The default 
+
+| Python                     | Description                                          |
+|:---------------------------|:-----------------------------------------------------|
+| `np.random.rand()`         | Random number between $0$ and $1$                    |
+| `np.random.rand(n)`        | Array of $n$ random numbers between $0$ and $1$      |
+| `np.random.randint(a,b)`   | A random integer from $a$ to $b-1$                   |
+| `np.random.randint(a,b,n)` | Array of $n$ random integers from $a$ to $b-1$       |
+| `np.random.normal()`       | A random value from the standard normal distribution |
+| `np.random.shuffle(arr)`   | Shuffle an array                                     |
+
+
+```{python}
+r = np.random.rand()
+print(r)
+```
+
+```{python}
+r = np.random.rand(5)
+print(r)
+```
+
+A common random event involves rolling a six-sided die. We can do this once with: 
+```{python}
+np.random.randint(1,7)
+```
+or five times with:
+```{python}
+np.random.randint(1,7,5)
+```
+Note that we use an upper limit of $7$ since the upper bound is exclusive. 
+
+## Exercises{.unnumbered} 
+
+1. *Reflex test statistics* -- Have one person place their hand at the edge of a table with their fingers out. A second person holds a ruler just above the first person's finger tips and lets go at a random time. Without moving their hand, the first person closes their fingers to stop the ruler. Repeat for multiple people. For each person,
+    - Collect 12 samples of how far the ruler falls before it is caught.
+    - Put the data into a NumPy array.
+    - Find the min, max, mean, and std of the data in the array.
+
+2. Create an array with the numbers 1 through 10. Use `shuffle` to shuffle the array, then print the first number. 
+
+3. What do you expect the mean of one million die rolls would be? Generate a numpy array representing one million rolls of a die. What is the mean of the rolls?  

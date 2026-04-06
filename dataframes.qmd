@@ -1,0 +1,163 @@
+# DataFrames
+
+A DataFrame is like a spreadsheet, but more dynamic and versatile. The **Pandas** library contains many useful functions for working with DataFrames, and we include Pandas with:
+```{python}
+import pandas as pd
+```
+
+Below are the results of the Rubik's WCA World Championship 2025 which took place at the Seattle Convention Center on July 6, 2025. The sixteen finalists are contained within a list of sixteen lists below, including their country and their times from five rounds of solving. We use that list to create a Pandas DataFrame with column names:
+
+```{python}
+rubiks_final = [
+    ["Yiheng Wang (王艺衡)","China",5.45,3.80,4.31,3.94,4.43],
+    ["Xuanyi Geng (耿暄一)","China",4.94,4.30,4.24,3.95,5.10],
+    ["Tymon Kolasiński","Poland",4.61,4.89,5.31,4.74,5.80],
+    ["Max Park","USA",6.07,5.21,5.90,6.05,5.81],
+    ["Luke Garrett","USA",10.36,4.68,5.83,6.04,6.27],
+    ["Luke Griesser","USA",6.47,5.67,5.94,5.73,6.70],
+    ["Qixian Cao (曹岂娴)","China",7.00,5.03,5.72,4.41,5.55],
+    ["Timofei Tarasenko","Russia",6.61,4.28,5.58,5.82,5.41],
+    ["Teodor Zajder","Poland",5.57,5.85,6.47,5.09,5.07],
+    ["Neo Cuares","Philippines",6.27,5.23,5.16,6.24,6.44],
+    ["Dylan Miller","USA",5.22,5.46,6.47,7.57,5.61],
+    ["Alexey Tsvetkov","Russia",7.17,6.34,5.15,8.05,6.27],
+    ["Matty Hiroto Inaba","USA",5.11,5.34,5.72,5.35,8.37],
+    ["Seung Hyuk Nahm (남승혁)","South Korea",5.65,6.58,5.80,7.89,6.60],
+    ["Kai-Wen Wang (王楷文)","Chinese Taipei",6.84,6.17,8.67,9.66,8.20],
+    ["Olaf Kuźmiński","Poland",6.62,7.19,5.88,4.76,5.74],
+]
+
+columns = ["Name","Country","Round1","Round2","Round3","Round4","Round5"]
+
+df = pd.DataFrame(rubiks_final, columns=columns)
+
+df
+```
+
+`df` is short for DataFrame and is a common variable name. While this entire dataset is readable, it is tiny compared with those we will see later. 
+
+## Familiarize with Data 
+
+One of the first steps when working with a new dataset is to get a sense of its size and structure. The following functions are often the first we will run on any new dataset. Run these on the our Rubik's DataFrame to get a sense of the functionality of each. 
+
+|                 | Pandas                        | Description                |
+|:----------------|:------------------------------|:---------------------------|
+|**Structure**    | `df.shape`                    | Number of rows and columns |
+|                 | `df.columns`                  | Column labels              |
+|                 | `df.info()`                   | Summary of columns         |
+|**Inspecting**   | `df.head()`                   | First 5 rows               |
+|                 | `df.tail()`                   | Last 5 rows                |
+|                 | `df.sample(5)`                | 5 Random rows              |
+|**Missing Data** | `df.isnull().sum()`           | Number of missing values   |
+|                 | `df.isnull().mean() * 100`    | Percent of values missing  |
+|**Summaries**    | `df.describe()`               |                            |
+|                 | `df.describe(include='all')`  |                            |
+
+
+## Slicing a DataFrame 
+
+There are several ways to select a subset of a DataFrame. 
+
+### Selecting a Column 
+
+Given our Rubik's DataFrame as `df`, we can select all of the countries by specifying the column label: 
+```{python}
+df['Country']
+```
+
+We can select multiple columns by specifying a *list* of columns: 
+```{python}
+df[ ['Round1', 'Round2', 'Round3'] ]
+```
+
+### Selecting Rows and Columns with iloc
+
+The `.iloc[]` indexer works by selecting rows and columns just like array slicing, by specifying values or ranges. We can select all of the rows and just the round columns with:
+```{python}
+df.iloc[:, 2:7]
+```
+
+### Selecting Rows by Value 
+
+Sometimes we only want rows with certain values. We can achieve this with a logical expression. For example: 
+```{python}
+df[df['Country'] == 'USA']
+```
+This one is weird at first. The inner statement `df['Country'] == 'USA'` creates a series of `True` and `False` values, then the outer `df[]` will provide only rows where the inner series is `True`. 
+
+This approach also works with inequalities. For example, we can find all of the rows with a round 2 result less than 5 seconds: 
+```{python}
+df[ df['Round2'] < 5 ]
+```
+
+### Summary of DataFrame Slicing {.unnumbered}
+
+| Python                   | Description                       | 
+|:-------------------------|:----------------------------------|
+| `df['column_name']`      | Select a column by name.          |
+| `df[['col1', 'col2']]`   | Select multiple columns.          | 
+| `df.iloc[5:10,:]`        | Select rows and columns by index. |
+| `df['Country'] == 'USA`  | Select by value.                  |
+
+
+## Working with Series
+
+Each column in a DataFrame is a series. For a given column, here we will call it 'feature', we can find:
+
+| Pandas                         | Description                   |
+|:-------------------------------|:------------------------------|
+| `df['feature'].unique() `      | List of unique values         |
+| `df['feature'].value_counts()` | Series - Number of occurances |
+| `df['feature'].mean()`         | Mean                          |
+| `df['feature'].median()`       | Median                        |
+| `df['feature'].std()`          | Standard deviation            |
+| `df['feature'].min()`          | Minimum value                 |
+| `df['feature'].max()`          | Maximum value                 |
+
+For example, the best time on Round 1 of the 2025 World Championship was: 
+```{python}
+df['Round1'].min()
+```
+
+## Rubik's Cube 2025 Final Rankings 
+
+In a Rubik's speed-cubing tournament, competitors solve five different shuffles. Standard scoring is to drop their best and worst times from those five solves and average their middle three times. This is called the Average of Middle, or AoM. 
+
+One way that we can calculate the AoM and determine rankings for players is as follows: 
+
+```{python}
+# Grab the times 
+times = df.iloc[:,2:7]
+
+# Calculate and insert AoM as a new column 
+times_sum = times.sum(axis=1)
+times_min = times.min(axis=1)
+times_max = times.max(axis=1)
+
+df['AoM'] = (times_sum - times_min - times_max) / 3
+
+# Sort 
+df.sort_values('AoM')
+```
+
+## Exercises{.unnumbered}
+
+1. Given the data from the 2025 Rubik's WCA World Championship, 
+    a. Create a box plot of the times for rounds 1 through 5.
+    b. Create a box plot of the five times for each player. These should all be in one figure. 
+    
+   Your first figure should have five box plots (one for each round). Your second figure should have 15 boxplots (one for each player). 
+
+2. How would the standings of the Rubik's WCA World Championship 2025 differ if results were based on:
+    a. The average of all five times? 
+    b. The average of the three best times? 
+    c. The best single time? 
+
+3. Create a dataframe called `dice` where the first column is 500 random values from 1 to 6, the second column is 500 random values from 1 to 6, and the third column is the sum of the first two columns. The column names should be "Roll1", "Roll2", and "Sum". Create a histogram of the "Sum" column. 
+
+4. Netflix 
+
+5. Trending YouTube Statistics
+
+6. FEV Data 
+

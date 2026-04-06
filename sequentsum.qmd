@@ -1,0 +1,126 @@
+# Sequent Sum
+
+A **sequence** is an ordered list of terms. It can be finite or infinite. Some famous sequences include: 
+
+| Sequence | Description |
+| :-- | :-- |
+| $1, 4, 9, 16, 25, \dots$ | The **square numbers**. The sequence of $n^2$ for $n \geq 1$. | 
+| $1, 3, 6, 10, 15, 21, \dots$ | The **triangular numbers**. A sequence representing sums of natural numbers, with the formula $T_n=\frac{n(n+1)}{2}$. |
+| $2, 3, 5, 7, 11, 13, 17, \dots$ | The **prime numbers**, which are natural numbers which are not the product of two smaller natural numbers.  |
+
+
+## Sequences with `arange`
+
+The **NumPy** library has a useful function called `arange` for generating sequences as an array over a particular range. 
+```{python}
+import numpy as np 
+print( np.arange(10) )
+```
+By default, `arange` starts at 0 and the stopping number (the 10 above) is excluded. We can pass `arange` more information about how we want to build the seqeuence in the form: 
+$$\text{np.arange(start, stop, step)}$$
+which specifies the start, the (excluded) stop, and the step size. The numbers 1 through 10 are generated with:
+```{python}
+np.arange(1, 11, 1)
+```
+The even numbers from 20 through 30:
+```{python}
+np.arange(20, 31, 2)
+```
+Here are examples of sequences with NumPy:
+
+| Sequence             | Python                 |
+| :--                  | :--                    |
+| $1,2,3,4,5$          | `np.arange(1,6)`       |
+| $1,3,5,7,\dots,99$   | `np.arange(1,100,2)`   |
+| $10,20,30,\dots,100$ | `np.arange(10,101,10)` |
+| $10,9,8,7,\dots,1$   | `np.arange(10,0,-1)`   |
+
+## Sequences with `linspace`
+
+Another useful NumPy function is `linspace`, which generates a sequence with linearly spaced values. The syntax for `linspace` is:
+$$\text{np.linspace(start, stop, num)}$$ 
+where $\text{num}$ is the number of elements in the sequence (as opposed to the step size). The line of code:
+```{python}
+np.linspace(0,10,50)
+```
+creates a numpy array that starts at 0, ends at 10, and has a total of 50 equally spaced elements in the array. The `linspace` function will be particularly useful for graphing functions in @sec-graphingfunctions.
+
+## Operations on Arrays
+
+Given a sequence as a NumPy array, we can perform math operations which apply to every element in the sequence. 
+
+```python
+x = np.array([1, 2, 3, 4, 5])
+
+x + 4      # [5, 6, 7, 8, 9, 10]
+x - 1      # [0, 1, 2, 3, 4]
+5 * x      # [5, 10, 15, 20, 25]
+x / 4      # [0.25, 0.5, 0.75, 1., 1.25] 
+x**2       # [1, 4, 9, 16, 25]
+```
+
+Given two sequences, it is important to know that the standard operations are performed element-wise, meaning that the operation is performed between matching pairs of elements. 
+
+```python
+x = np.array([1, 2, 3])
+y = np.array([4, 5, 6])
+
+x + y      # [5, 7, 9]
+x - y      # [-3, -3, -3]
+x * y      # [4, 10, 18]
+x / y      # [0.25, 0.4, 0.5]
+```
+
+## Sums
+
+A famous math problem asks for the sum of the numbers from 1 to 100,
+$$\sum_{n=1}^{100}n$$
+which we can find quickly with: 
+```{python}
+np.sum( np.arange(1,101,1) )
+```
+Given a sum with a more complex expression, we can find that sum by initializing the *iteration variable* and then writing the expression. For example,  
+$$\sum_{k=1}^{20}k^2+3k+2$$
+can be found with:
+```{python}
+k = np.arange(1,21,1)        # Creates sequence k = 1 through 20
+np.sum( k**2 + 3*k + 2 )     # Sums k^2+3k+2 for each element in k  
+```
+Here are some more examples: 
+
+| Series                               | Python                                                | 
+|:-------------------------------------|:------------------------------------------------------|
+| $$\sum_{n=0}^{10}\frac{1}{2^{n}}$$   | `n = np.arange(11)`<br>`np.sum( 1/2**n )`             | 
+| $$\sum_{m=5}^{15}\frac{m+m^3}{3+m}$$ | `m = np.arange(5,16)`<br>`np.sum( (m+m^3) / (3+m) )`  | 
+| $$\sum_{x=1}^{20}3x-5$$              | `x = np.arange(1,21)`<br>`np.sum( 3*x-5 )`            | 
+
+
+## Exercises{.unnumbered}
+
+1. Generate two NumPy arrays, each representing one million rolls of a die. Create a histogram of their sum. Be sure to specify the correct number of bins and label the plot. 
+
+2. Create each of the following arithmetic sequences using a single line of code for each:
+    - $1,2,3,4,5,6$
+    - $2,4,6,8,10$
+    - $5,10,...,40,45$
+    - $32,29,...,-7,-10$
+    - Odd numbers from 77 to 101
+    - Even numbers from 60 down to 40
+
+3. Write the most concise NumPy expressions you can to evaluate the summations of the following sequences:
+    - Integers from 1 to 100
+    - Even numbers from 2 to 100
+    - $-18, -12, -6, 0, 6, 12, 18, 24$
+    - $1.5, 4, 6.5, 9, ..., 49$
+    - $0,\frac{\pi}{6},\frac{\pi}{3},\frac{\pi}{2},\frac{2\pi}{3},...,2\pi$
+    - Odd numbers greater than 100 and less than 1000
+    - All the prime numbers less than 100
+
+4. Find the value of the following sums using NumPy:
+
+|   |  |   |
+| :--: | :--: | :--: |
+| $$\sum_{k=1}^{5}k^2-3$$                | $$\sum_{n=1}^{5}(4-n^2)$$  |   $$\sum_{m=1}^{10}\left(4m^2-2\right)$$  |
+| $$\frac{7}{4}+\frac{9}{5}+\frac{11}{6}+\dots+\frac{107}{54}$$ | $$\sum_{h=4}^{9}h(h+5)$$   | $$\sum_{m=4}^{9}\frac{m^2+1}{m}$$ |
+| $$\sum_{x=-4}^{4}x^2+4x+5$$            | $$\sum_{n=1}^{100}\frac{1}{n}$$    | $$\frac{10}{1}+\frac{20}{2}+\frac{30}{3}+\dots+\frac{100}{10}$$           |
+

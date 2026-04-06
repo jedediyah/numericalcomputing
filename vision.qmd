@@ -1,0 +1,14 @@
+# Computer Vision 
+
+OpenCV 
+
+```{python}
+import cv2 
+import numpy as np 
+```
+
+## Exercises {.unnumbered}
+ 
+1. 
+
+2. 
