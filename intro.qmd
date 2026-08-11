@@ -1,6 +1,12 @@
-# Introduction
+# Introduction {.unnumbered}
 
 This book is an introduction to doing mathematics with a computer. Due to its popularity and ease of setup, Python is the programming language in which we present material. However, the ideas presented carry over into any language.  
+
+## Numerical Computing 
+
+**Numerical methods** are techniques or algorithms for finding approximate solutions to mathematical problems. Many of the equations used to describe natural phenoma come in the form of differential equations, and not all differential equations have closed-form solutions. For example, while it is possible to analytically solve the motion of two objects interacting gravitationally, no closed-form solution exists for three interacting bodies (the three-body problem). 
+
+Many equations, even some simple ones like $$\cos(x) = x$$ do not have algebraic solutions. We can only find their solutions approximately. Numerical methods are often iterative, repeating a sequence of steps until the approximation reaches a desired level of precision. This makes computing ideal for tackling these types of problems.
 
 ## How to Get the Most Out of This Book 
 
@@ -34,7 +40,7 @@ We won't cover the details, but you should know that the consequence of storing 
 
 ## Getting Started
 
-The fastest way to get started is to visit [https://colab.research.google.com](https://colab.research.google.com) and click on `+ New notebook`. Google Colab, while it has some challenges, is a useful sandbox platform for playing with Python. Alternatively, you can download Python from [https://www.python.org/downloads/](https://www.python.org/downloads/) and setup your own environment.
+The fastest way to get started is to visit [https://colab.research.google.com](https://colab.research.google.com) and click on `+ New notebook`. Google Colab, while it has some challenges, is a useful sandbox platform for playing with Python. Alternatively, you can use [https://jupytereverywhere.org](https://jupytereverywhere.org). If possible, however, it is best to download Python from [https://www.python.org/downloads/](https://www.python.org/downloads/) and setup your own environment.
 
 Regardless of platform, be sure to **disable AI** and any forms of autocompletion. To do this in Colab, click the gear icon in the top right, then click "AI Assistance", then:
 

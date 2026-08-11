@@ -1,0 +1,45 @@
+# Simulation
+
+# Computer Simulation 
+
+A **simulation** is a representation of a phenomenon or a process, usually over time. For example, we could define a ball as a circle at rest 5 m above the ground, and then simulate that ball falling to the ground by finding its position every 0.01 seconds, as it accelerates, until it hits the ground. 
+
+Given a model of a phenomenon, we can simulate that phenomenon by defining an initial state and then *running* the simulation for some fixed amount of time, or until some specific requirement is reached. 
+
+## Simulating Gravity 
+
+Let's simulate a ball falling from a height of 5 meters. 
+```{python}
+import matplotlib.pyplot as plt
+import numpy as np
+
+## Initial conditions 
+y = 15      # Initial height 
+vy = 0      # Initial vertical velocity
+a = -9.8    # Initial acceleration (constant)
+dt = 0.01   # Time step size
+
+times = [0]
+heights = [y]
+
+## Run simulation until ball reaches ground 
+while y > 0: 
+    vy = vy + a*dt 
+    y = y + vy*dt + (1/2) * a * dt**2
+    times.append(times[-1]+dt)
+    heights.append(y)
+
+## Visualize the results 
+plt.plot(times, heights)    
+plt.xlabel('Time (s)')
+plt.ylabel('Height (m)')
+plt.show()
+```
+
+## Simulating Projectile Motion 
+
+
+
+## Deterministic vs. Random 
+
+

@@ -1,9 +1,47 @@
 # Logic and Flow
 
 
+## Bool  
+
+A **Boolean** expression is one that evaluates to either `True` or `False`. 
+
+```{python}
+5 < 7
+```
+Given two values `a` and `b`, the following are Boolean comparisons:
+
+| Description           | Operator  | Python   | 
+|:----------------------|:----------|:---------|
+| Less than             | $<$       | `a < b`  | 
+| Less than or equal    | $\leq$    | `a <= b` | 
+| Greater than          | $>$       | `a > b`  | 
+| Greater than or equal | $\geq$    | `a >= b` | 
+| Equal to              | $=$       | `a == b` | 
+
+That last one can be easy to mix up with *assignment*. 
+
 ## If {#sec-logical-if}
 
+```python
+if CONDITION:
+    BODY OF CODE
+```
+
 ## Else 
+
+Sometimes we want to do one thing `if` a condition is true, `else` we want to do something else if it wasn't true. 
+```python
+num = np.random.rand() 
+
+if num < 0.5:
+    print('HEADS')
+else: 
+    print('TAILS')
+```
+
+## Else If 
+
+
 
 ## Using logic to slice arrays 
 ```{python}

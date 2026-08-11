@@ -14,6 +14,7 @@ book:
     - variables.qmd
     - listsarrays.qmd
     - graphingdata.qmd
+    - graphstyles.qmd
     - sequentsum.qmd
     - graphingsequences.qmd
     - slicing.qmd
@@ -22,7 +23,11 @@ book:
     - logic.qmd
     - classification.qmd
     - looping.qmd
+    - methods.qmd
     - random.qmd
+    - deterministic.qmd
+    # - randomwalks.qmd
+    # - dynamicalsystems.qmd
     - vision.qmd
     # - glossary.qmd
     - references.qmd
@@ -47,4 +52,5 @@ format:
     documentclass: scrreprt 
     toc: true
     toc-depth: 2
+
 

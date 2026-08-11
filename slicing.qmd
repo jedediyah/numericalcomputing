@@ -7,7 +7,8 @@
 Given a 1-D NumPy array named `vec`, the syntax to select a range of indices is:
 $$\text{vec} [\text{start} : \text{stop} : \text{step}]$$
 where $\text{start}$ is the starting index, $\text{stop}$ is the *excluded* stopping index, and $\text{step}$ is an incriment. Consider the array:
-```python 
+```{python} 
+import numpy as np 
 vec = np.array([10, 20, 30, 40, 50, 60, 70, 80])
 ``` 
 which has the structure: 

@@ -43,7 +43,7 @@ F = G*m1*m2/r**2
 print(F)
 ```
 
-## Iterating with Variables
+## Iterating with Variables {#sec-variterate} 
 
 Variables can be overwritten to update their value. This is convenient for algorithms that *iterate*, repeating some process over and over.
 
@@ -157,8 +157,21 @@ Note that we converted the number `twice` back to a `str` to be able to concaten
     $$F_e = k \frac{q_1 q_2}{d^2}$$
     where $k = 9 \cdot 10^9$ is a constant. Using variables, calculate the force between a charge of 0.3 C separated by 345 m from a charge of 0.08 C. 
 
-2. Use the square root algorithm: $$g_{i+1} = \frac{g_i + \frac{n}{g_i}}{2}$$
+2. A quadratic equation is one that can be written in the form: 
+   $$ax^2 + bx + c = 0$$ 
+   Recall that the solutions to a quadratic can be found with the *quadratic formula*: 
+   $$x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$$ 
+   Write a script to find the two solutions for the following quadratics, or explain why there is a problem or error.
 
+    a. $x^2-x-6$
+    b. $x^2+14x+45$
+    c. $x^2+2$
+    d. $x^2-5$ 
+    e. $x^2+4x+4$
+    f. $2x^2+20x+48$
+    g. $5x^2+3x-9$
+
+3. Use the square root algorithm: $$g_{i+1} = \frac{g_i + \frac{n}{g_i}}{2}$$
      with an initial guess of $g_0=10$, to find the approximation $g_5$ for the following values:
      a. $\sqrt{64}$
      b. $\sqrt{63}$
@@ -166,12 +179,12 @@ Note that we converted the number `twice` back to a `str` to be able to concaten
      d. $\sqrt{200}$
      e. $\sqrt{1000000}$
      
-
-3. Use the `input()` function to prompt the user for two numbers, `a` and `b`, then print out the product and ratio of those two numbers.
+4. Use the `input()` function to prompt the user for two numbers, `a` and `b`, then print out the product and ratio of those two numbers.
 
     *Hint*: The `input()` function returns a string, so you will have to convert that string to a float so it can be used in a calculation.
+    
 
-4. Using the `input()` function,
+5. Using the `input()` function,
     a. prompt a user for a height in meters, then
     b. tell them how long it would take for a bowling ball to fall that far when dropped from rest.
 

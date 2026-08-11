@@ -58,11 +58,13 @@ plt.plot(x, y)
 ```
 Which leads to some observations: 
 
-1. The infinite discontinuities don't actually go to infinity here. 
-2. Even though they don't go to infinity, they go far, which dominates the window in the $y$ direction 
+1. The infinite discontinuities don't seem to actually go to infinity here. 
+2. Even though they don't go to infinity, they go far, which stretches the window in the $y$ direction 
 3. The dicontinuities are connected when they shouldn't be. 
 
-For observation 1., it is likely that we aren't evaluating $\tan$ at exactly $\frac{\pi}{2}$. For observation 2. we can adjust our window using `np.xlim` and `np.ylim`. Let's graph $\tan$ again, but this time constrain the window in the y direction:
+For observation 1., we aren't evaluating $\tan$ at exactly $\frac{\pi}{2}$, and we aren't getting a $y$ "value" of $\infty$. 
+
+For observation 2. we can adjust our window using `np.xlim` and `np.ylim`. Let's graph $\tan$ again, but this time constrain the window in the y direction:
 ```{python}
 x = np.linspace(-2*np.pi, 2*np.pi, 500)
 y = np.tan(x)
@@ -70,7 +72,7 @@ y = np.tan(x)
 plt.plot(x, y)
 plt.ylim([-10,10])
 ```
-This is nice, but to address observation 3., those infinite discontinuities are still connected. Well, that might be okay if we understand what we are looking at. Alternatively, we could avoid connecting the lines with a scatter plot and *lots* of markers:
+This is nice, but to address observation 3., those infinite discontinuities are still connected. Well, that might be okay if we understand what we are looking at. Alternatively, we could avoid connecting the lines by using a dense scatter plot, a scatter plot with *lots* of markers:
 ```{python}
 x = np.linspace(-2*np.pi, 2*np.pi, 10000)
 y = np.tan(x)
@@ -91,33 +93,6 @@ plt.plot(x, y)
 plt.ylim([-10,10])
 ```
 --> 
-
-## Python Functions 
-
-Python functions can be incredibly complex with many lines of code. They can take any number of inputs and return lists of objects or nothing at all. Here, we will look at the most simple case of functions that look like mathematical functions, which an input $x$ and returns an output in terms of that input. 
-
-Python functions are *defined* using the `def` keyword. The *body* of a function is indented. Parentheses wrap input variables and we use the `return` keyword to return an output. Consider the following functions: 
-```{python}
-def f(x):
-    return x**2
-
-def g(x):
-    return x**2 - 5*x + 2
-```
-These two functions correspond, respectively, to the functions:
-$$f(x)=x^{2}$$
-$$g(x)=x^2-5x+2$$
-While do not need to define functions this way to graph them, it makes function composition and operations on functions much nicer. For example, now that we have $f$ and $g$ defined, we can calculate and graph expressions like:
-```{python}
-x = np.linspace(-1,5,100)
-
-plt.plot( x, f(x), label='f')
-plt.plot( x, g(x), label='g')
-plt.plot( x, f(g(x)), label='f(g)')
-plt.plot( x, 2*f(x) - 3*g(x), label='2f-3g')
-plt.legend() 
-```
-
 
 ## Examples 
 
@@ -152,18 +127,23 @@ plt.plot(x,y)
 ```
 
 ```{python}
+# x and y values 
 x = np.linspace(0,2,100)
 y1 = np.exp(-x)
 y2 = np.sin(x) 
 y3 = np.cos(x) 
 
+# Draw the axes 
 plt.axhline(0, color='black')
 plt.axvline(0, color='black')
+
+# Plot the functions 
 plt.plot(x,y1)
 plt.plot(x,y2)
 plt.plot(x,y3)
 ```
 
+<!--
 ```{python}
 r = np.arange(0, 2, 0.01)
 theta = 2 * np.pi * r
@@ -171,6 +151,7 @@ theta = 2 * np.pi * r
 plt.subplot(111, projection='polar')
 plt.plot(theta, r)                        
 ```
+--> 
 
 
 ## Graphing Summary 

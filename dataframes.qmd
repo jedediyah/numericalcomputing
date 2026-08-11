@@ -5,7 +5,7 @@ A DataFrame is like a spreadsheet, but more dynamic and versatile. The **Pandas*
 import pandas as pd
 ```
 
-Below are the results of the Rubik's WCA World Championship 2025 which took place at the Seattle Convention Center on July 6, 2025. The sixteen finalists are contained within a list of sixteen lists below, including their country and their times from five rounds of solving. We use that list to create a Pandas DataFrame with column names:
+Below are the results of the 2025 Rubik's WCA World Championship which took place at the Seattle Convention Center on July 6, 2025 ([https://www.youtube.com/watch?v=xpmcqOZp5PQ](https://www.youtube.com/watch?v=xpmcqOZp5PQ)). The sixteen finalists are contained within a list of sixteen lists below, including their country and their times from five rounds of solving. We use that list to create a Pandas DataFrame with column names:
 
 ```{python}
 rubiks_final = [
@@ -45,13 +45,12 @@ One of the first steps when working with a new dataset is to get a sense of its 
 |**Structure**    | `df.shape`                    | Number of rows and columns |
 |                 | `df.columns`                  | Column labels              |
 |                 | `df.info()`                   | Summary of columns         |
+|                 | `df.describe()`               | Descriptive statistics     |
 |**Inspecting**   | `df.head()`                   | First 5 rows               |
 |                 | `df.tail()`                   | Last 5 rows                |
 |                 | `df.sample(5)`                | 5 Random rows              |
 |**Missing Data** | `df.isnull().sum()`           | Number of missing values   |
 |                 | `df.isnull().mean() * 100`    | Percent of values missing  |
-|**Summaries**    | `df.describe()`               |                            |
-|                 | `df.describe(include='all')`  |                            |
 
 
 ## Slicing a DataFrame 

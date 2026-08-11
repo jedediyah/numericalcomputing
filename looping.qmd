@@ -2,13 +2,7 @@
 
 ## For 
 
-## Revisiting Square Root 
-
-Halting condition. 
-
-## Random Walks
-
-## Dynamical Systems 
+## Updating a list 
 
 
 ## Exercises

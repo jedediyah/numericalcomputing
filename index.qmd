@@ -10,7 +10,7 @@ This is a book about doing mathematics with a computer. It is an invitation and 
 
 Experimental mathematics is sometimes contrasted with rigorous proof, but these really are not opposite ends of a spectrum, rather experimentation and proof are pillars of mathematical progress. Observation and experiment offer new avenues of research and even inspire whole branches of mathematics  [@EpsteinLevy2001]. Practices of experimental mathematics are fundamental to the learning of mathematics [@BebermanMeserve1956; @Zoet1969]. 
 
-We cannot just tell students how to do mathematics. We aim also to facilitate experiencing mathematics while developing technical skill. We might consider the antithesis of experimental mathematics to be discovery-avoidance, never visiting the boundaries of understanding and certainly never pushing beyond them. Seymour Papert, prominent proponent of computing in education, shared in *Mindstorms* [-@papert1980mindstorms, pp. 4]:
+We cannot just tell students how to do mathematics. We aim also to facilitate experiencing mathematics while developing technical skill. We might consider the antithesis of experimental mathematics to be discovery-avoidance, never visiting the boundaries of understanding and certainly never pushing beyond them. Seymour Papert, prominent proponent of computing in mathematics education, shared in *Mindstorms* [-@papert1980mindstorms, pp. 4]:
 
 >"In my vision, the child programs the computer and, in doing so, both acquires a sense of mastery over a piece of the most modern and powerful technology and establishes an intimate contact with some of the deepest ideas from science, from mathematics, and from the art of intellectual model building."
 
@@ -42,7 +42,9 @@ In observing the impact that computing had on reinvigorating experimental mathem
 
 Terence Tao, in his talk *Machine-Assisted Proofs* [-@Tao2025MachineAssistedProofs, 2:54] echos Mandelbrot more than three decades later when he observes that: "there has long been a tradition of experimental mathematics...", but that it is "honestly not as well respected as it should be compared to theoretical mathematics". He continues, in the full spirit of Mandelbrot, that "I do feel like in the future, we're going to have much more balance between theory and experiment, closer to how it is in the other sciences."
 
-Epstein and Levy, founders of the *Journal of Experimental Mathematics*, pointed out in NCTM's *Mathematics Teacher* in 2001 that "Mathematics is integrally connected with other fields" [-@EpsteinLevy2001]. Indeed, it has long been the case that "A majority of those who make extensive use of mathematics do so by means of a computer" [@Zoet1969]. Epstein and Levy also recognize that "increasingly, research mathematicians use computers to do their research", and point to results in pure mathematics that were obtained through computing. 
+Epstein and Levy, founders of the *Journal of Experimental Mathematics*, pointed out in NCTM's *Mathematics Teacher* in 2001 that "Mathematics is integrally connected with other fields" [-@EpsteinLevy2001]. Indeed, it has long been the case that "A majority of those who make extensive use of mathematics do so by means of a computer" [@Zoet1969]. Epstein and Levy also recognize that "increasingly, research mathematicians use computers to do their research", and point to results in pure mathematics that were obtained through computing.  
+
+"Children will become more proficient in mathematics if they do mathematics rather than merely learn about mathematics" [@papert1971], and the doing of mathematics, both theoretical and applied, benefits tremendously from computing. So let us develop our computing skills so that we can more deeply explore mathematics. 
 
 ## 
 © Copyright 2025.

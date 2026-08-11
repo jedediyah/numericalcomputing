@@ -6,29 +6,18 @@ We begin by importing the `pyplot` plotting library.
 
 ```{python}
 import matplotlib.pyplot as plt
-import numpy as np
 ```
 Given data in lists or arrays, we can simply plot that data!
 ```{python}
 x = [0, 1, 2, 3, 4, 5, 6]
 y = [4, 8, 6, 9, 7, 6, 8]
 plt.plot(x,y)
+plt.show() 
 ```
 
 ## Labels and Limits 
 
-Plotting is not complete unless your plot is properly labeled. The table below contains the functions for basic labeling. 
-
-| Description     | Python                           | 
-| :--             | :--                              |
-| Label $x$ axis  | `plt.xlabel('X')`                | 
-| Label $y$ axis  | `plt.ylabel('Y')`                | 
-| Title a graph   | `plt.title('My Plot')`           | 
-| Plot and label  | `plt.plot(x,y,label='series1')`  | 
-| Turn on legend  | `plt.xlabel('X')`                | 
-| Turn on grid    | `plt.grid()`                     | 
- 
-A common sequence of commands for plotting data may look like this:
+Plotting is not complete unless your plot is properly labeled. A common sequence of commands for plotting with labels may look like this:
 ```{python}
 # Data
 year = [1800, 1830, 1880, 1900, 1920, 1990, 2000]
@@ -47,6 +36,7 @@ plt.legend()
 plt.show() 
 ```
 
+Note that we called `plt.plot()` twice before calling `plt.show()`, which results in the two plots appearing on the same figure. 
 
 ## Graph Types
 
@@ -54,7 +44,7 @@ Below are five scenarios that demonstrate five different types of useful Graphs.
 
 ### Line Plot {.unnumbered}
 
-The default plot in `pyplot` is a line chart. Consider the following data representing time and distance traveled during a road trip. 
+The line chart is the default graph type in `pyplot`. Consider the following data representing time and distance traveled during a road trip. 
 
 | $t$   | 0   | 1   | 2    | 3   | 4   | 5   | 6   | 
 | :--   | :-- | :-- | :--  | :-- | :-- | :-- | :-- | 
@@ -168,111 +158,22 @@ It is not required that we break up the `boxplot` command onto different lines. 
 - [**Box Plot**](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.boxplot.html) --
 	Summarizes a dataset using the median, quartiles, and possible outliers. It is useful for comparing distributions and understanding spread and variability.
 
-## Style
-
-There is a tremendous amount of customization that can be done with PyPlot graphs. Two important style customizations involve the **marker** and **line**. The *marker* is the point that is plotted, and the *line* is the connection between points. See the PyPlot [marker style reference](https://matplotlib.org/stable/gallery/lines_bars_and_markers/marker_reference.html) and [line style reference](https:/matplotlib.org/stable/gallery/lines_bars_and_markers/linestyles.html).
-
-### Marker
-
-The most important customizations is the `marker`, but we can additionally set the colors and size: 
-```{python}
-x = [1, 2, 3, 4]
-y = [2, 4, 3, 5]
-
-plt.plot( x, y, 
-          marker='o',
-		  markeredgecolor='red', 
-		  markerfacecolor='orange',
-		  markersize=10
-		 )
-plt.show()
-```
-
-Some additional marker types include: 
-
-| Marker Type     | Marker Code | Appearance |
-|-----------------|-------------|------------|
-| Point           | `'.'`       | ·          |
-| Plus            | `'+'`       | +          |
-| X               | `'x'`       | ×          |
-| Circle          | `'o'`       | ○          |
-| Square          | `'s'`       | □          |
-| Pentagon        | `'p'`       | ⬠          |
-| Hexagon         | `'h'`       | ⬡          |
-| Diamond         | `'D'`       | ◇          |
-| None            | `''`        | (no mark)  |
-
-### Line 
-
-The main line customizations include which type of line, and what color to draw it with. 
-```{python}
-x = [1, 2, 3, 4]
-y = [2, 4, 3, 5]
-
-plt.plot( x, y, 
-          linestyle='-.', 
-		  color='purple'
-		)
-plt.show()
-```
-Some additional line styles include: 
-
-| Line Type | Line Code  | Appearance |
-|-----------|------------|------------|
-| Solid     | `'-'`      | ─────      |
-| Dashed    | `'--'`     | ─ ─ ─ ─    |
-| Dashdot   | `'-.'`     | ─ · ─ ·    |
-| Dotted    | `':'`      | · · · ·    |
-| None      | `''`       | (no line)  |
-
-### Marker and Line Shortcuts 
-
-It is best to write out the explicit attributes you are customizing, but there are some nice shortcuts for convenience. Plot red point markers with dotted line using:
-```{python}
-x = [1, 2, 3, 4]
-y = [2, 4, 3, 5]
-
-plt.plot(x, y, 'r.:')    # Red, point marker, dotted line
-plt.show()
-
-plt.plot(x, y, 'ks--')   # Black, square marker, dashed line 
-plt.show()
-```
-
-The matplotlib documentation offers several nice [cheat-sheets](https://matplotlib.org/cheatsheets/) that can be printed. 
-
-
-## Graphing Arrays 
-
-Given a 2-D array of data, PyPlot treates each column as a series. 
-
-
-## Comparing Populations 
-
-
 
 ## Exercises{.unnumbered}
 
-1. Graph the following data set as a scatter plot. On the same plot, draw an approximate best fit line to the data (this is an estimate).
+1. Graph the following data set as a scatter plot. On the same plot, draw an approximate best fit line to the data (note that this line will be an estimate, and you can draw a line between two $(x,y)$ coordinates).
 
 	| x |  0   | 1    | 2    | 3    | 4    | 5    | 6  | 7    | 8    | 9    |
 	|---|------|------|------|------|------|------|----|------|------|------|
 	| y | 12.5 | 13.1 | 13.2 | 13.2 | 13.8 | 14.1 | 15 | 14.8 | 14.9 | 15.1 |
 
-2. Recreate the following graphs as closely as you can:
-
-![Graph](img/plot_goal1.png){width=45%} 
-![Graph](img/plot_goal2.png){width=45%}  
-![Graph](img/plot_goal3.png){width=45%}
-![Graph](img/plot_goal5.png){width=45%} 
-
-3. Perform a reflex test (or use previous data). Have one person place their hand at the edge of a table with their fingers out. A second person holds a ruler just above the first person's finger tips and lets go at a random time. Without moving their hand, the first person closes their fingers to stop the ruler. For each person,
+2. Perform a reflex test (or use previous data). Have one person place their hand at the edge of a table with their fingers out. A second person holds a ruler just above the first person's finger tips and lets go at a random time. Without moving their hand, the first person closes their fingers to stop the ruler. For each person,
     - Collect 12 samples of how far the ruler falls before it is caught. 
     - Put the data into a NumPy array. 
 	- Create a **histogram** for each person depicting the distribution of their reflex times.
 	- Create a **box plot** for each person depicting the distribution of their reflex times.  
 
-4. Consider a pendulum with mass $m$, length $L$, and release angle $\theta$. The **period** $T$ of a pendulum is the amount of time it takes to complete one cycle of motion, swinging from one side to the other and then back again. To model the period of a pendulum, we want to determine the effect that each of the variables $m$, $L$, and $\theta$ have on $T$. We can explore this experimentally by keeping two of the variables constant while changing the third and looking for changes in $T$.
+3. Consider a pendulum with mass $m$, length $L$, and release angle $\theta$. The **period** $T$ of a pendulum is the amount of time it takes to complete one cycle of motion, swinging from one side to the other and then back again. To model the period of a pendulum, we want to determine the effect that each of the variables $m$, $L$, and $\theta$ have on $T$. We can explore this experimentally by keeping two of the variables constant while changing the third and looking for changes in $T$.
 		![](img/pendulum_plots.png)
 
 

@@ -40,7 +40,7 @@ Traceback (most recent call last):
     ~~~~~~~~~^~~~
 TypeError: can only concatenate str (not "int") to str
 ```
-This message identified a syntax error and even gave a nice hint that we were trying to combine a string of characters with a number. 
+This command resulted in an error message and even gave a nice hint that we were trying to combine a string of characters with a number. 
 
 Another common error is trying to use a variable we haven't yet defined. For example: 
 ```python
@@ -55,7 +55,21 @@ Traceback (most recent call last):
 NameError: name 'x' is not defined
 ```
 
-Some bugs won't result in an error at all and are harder to catch. This could include code that is technically correct but miscalculates, or commands that are out of order. When we start to write longer scripts we will explore debugging and good coding practices. 
+**Syntax** refers to the grammar of a language, rules that define valid expressions. Many common errors are syntax errors, meaning an expression that is not grammatically correct. Consider this meaningless addition:
+
+```{python}
+#| error: true
+24 + 
+```
+
+Or this sloppy parethetical:
+
+```{python}
+#| error: true
+(2+4) - 8)
+```
+
+Some mistakes won't result in an error at all and are harder to catch. This could include code with valid syntax that miscalculates, or commands that are out of order. When we start to write longer scripts we will explore debugging and good coding practices. 
 
 ## Built-In Functions 
 
@@ -107,9 +121,11 @@ While this is clunky to write and read, it scales as we begin to use more functi
 
 ## Compound Expressions 
 
-Parentheses are our friends! When writing expressions with division, the most common mistake relates to order of operations. Take, for example, the expression: $$\frac{6+4}{2}$$ We write this in Python as: `(6+4)/2`
-
-The mistake involves writing expressions like the one above as `6+4/2` without parentheses, which results in an incorrect answer of $7$ since the division would take precedence over addition. When in doubt, wrap expressions in parentheses to ensure the anticipated order of operations.
+Parentheses are our friends! When writing expressions with division, the most common mistake relates to order of operations. Take, for example, the expression: $$\frac{6+4}{2}$$ We write this in Python as: 
+```python
+(6+4)/2
+```
+The mistake involves writing expressions like the one above as `6+4/2` without parentheses, which results in an incorrect answer of $7$ since the division would take precedence over addition. When in doubt, wrap expressions in parentheses to ensure the expected order of operations.
 
 Here are some examples of expressions translated into Python:
 
@@ -166,6 +182,8 @@ Numerical error is a fascinating and important topic [@heath2018scientific], but
 
 Write the following arithmetic expressions in Python and print the results.
 
+1. 
+
 :::: columns
 ::: column
 a. $$5 + 18$$
@@ -186,3 +204,10 @@ m. $$|\lfloor -3.14 \rfloor |$$
 n. $$e^{\ln \left( \gcd(24,32) \right) }$$
 :::
 ::::
+
+2. Determine the types of error, if there are any, in the following expressions: 
+  a. `7 * 4 ** `
+  b. `34 / 0`
+  c. `((3+2)/(6-1))`
+  d. `print "Hi!"`
+  e. `x = 4y`

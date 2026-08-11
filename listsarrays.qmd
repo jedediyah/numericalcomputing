@@ -119,6 +119,6 @@ Note that we use an upper limit of $7$ since the upper bound is exclusive.
     - Put the data into a NumPy array.
     - Find the min, max, mean, and std of the data in the array.
 
-2. Create an array with the numbers 1 through 10. Use `shuffle` to shuffle the array, then print the first number. 
+2. Create an array with the numbers 1 through 10. Use `shuffle` to shuffle the array, then print the first number using list indexing. 
 
 3. What do you expect the mean of one million die rolls would be? Generate a numpy array representing one million rolls of a die. What is the mean of the rolls?  

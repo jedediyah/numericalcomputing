@@ -1,5 +1,18 @@
-# Simulation 
+# Monte Carlo
 
-## Random
+## Pseudorandomness 
+```{python}
+import numpy as np 
+
+print( np.random.rand() )
+```
 
 ## Monte Carlo Simulations 
+
+## Coin
+
+## Die 
+
+## Dice 
+
+## Cards 
