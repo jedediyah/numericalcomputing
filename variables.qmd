@@ -190,3 +190,4 @@ Note that we converted the number `twice` back to a `str` to be able to concaten
 
     Recall from Physics that:
     $$\Delta x = v_{i} \Delta t + \frac{1}{2} a \Delta t^{2}$$
+    where $\Delta x$ is displacement, $v_i$ is initial velocity, $\Delta t$ is the change in time, and $a$ is the acceleration.

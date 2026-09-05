@@ -65,7 +65,7 @@ Some of the similar tasks with lists and arrays include:
 | Sort elements   | `sorted(lst)`      | `np.sort(arr)`                  |
 
 
-## NumPy Summary Statistics
+## NumPy Summary Statistics {#sec-numpy-statistics}
 
 NumPy arrays will often contain data. We can find summary statistics for an array with:
 ```python
@@ -114,11 +114,44 @@ Note that we use an upper limit of $7$ since the upper bound is exclusive.
 
 ## Exercises{.unnumbered} 
 
-1. *Reflex test statistics* -- Have one person place their hand at the edge of a table with their fingers out. A second person holds a ruler just above the first person's finger tips and lets go at a random time. Without moving their hand, the first person closes their fingers to stop the ruler. Repeat for multiple people. For each person,
+1. What would each of the following print? 
+    - ```python
+    lst = [2, 4, 6, 8]
+    pritn( lst[1] )
+    ```
+    - ```python
+    lst = [13, 32, 78, 110, 511, 46]
+    pritn( lst[5] )
+    ```
+    - ```python
+    lst = [3, 1, 4, 1, 5, 9, 2, 6]
+    pritn( lst[4] )
+    ```
+    - ```python
+    lst = [1, 3, 5, 7]
+    pritn( lst[-1] )
+    ```
+
+1. For each of the lists below, use indexing to print the desired element. For example, if you want to print the `35` from `x = [15, 25, 35, 45, 55]`, your answer would be `print( x[2] )`.
+    - `3` from `y = [6, 5, 4, 3, 2, 1]`
+    - `'hi'` from `greetings = ['sup', 'hello', 'hi', 'hey']`
+    - `0` from `nums = [0, 5, 10, 15, 20, 25]`
+
+2. For each of the descriptions below, create a *list* matching the description and store the list in a variable, then print the contents of the variable. Be sure to name your variables appropriately. 
+    - The even numbers from 2 through 10.
+    - The first 10 prime numbers.
+    - Examples of words with length 1, 2, 3, 4, and 5. 
+    - A list that contains an integer, a decimal number, a string, and a list. 
+    - A list that contains all of the lists above. 
+
+   Can that last list be updated to contain itself? 
+
+3. Create an array with the numbers 1 through 10. Use `shuffle` to shuffle the array, then print the first number using indexing. 
+
+4. *Reflex test statistics* -- Have one person place their hand at the edge of a table with their fingers out. A second person holds a ruler just above the first person's finger tips and lets go at a random time. Without moving their hand, the first person closes their fingers to stop the ruler. Repeat for multiple people. For each person,
     - Collect 12 samples of how far the ruler falls before it is caught.
-    - Put the data into a NumPy array.
+    - Store the data as a NumPy array in a variable called `reflex_data`.
     - Find the min, max, mean, and std of the data in the array.
 
-2. Create an array with the numbers 1 through 10. Use `shuffle` to shuffle the array, then print the first number using list indexing. 
 
-3. What do you expect the mean of one million die rolls would be? Generate a numpy array representing one million rolls of a die. What is the mean of the rolls?  
+5. What do you expect the mean of one million die rolls would be? Generate a numpy array representing one million rolls of a die. What is the mean of the rolls?  

@@ -15,7 +15,7 @@ plt.plot(x,y)
 plt.show() 
 ```
 
-## Labels and Limits 
+## Title and Labels
 
 Plotting is not complete unless your plot is properly labeled. A common sequence of commands for plotting with labels may look like this:
 ```{python}
@@ -40,7 +40,7 @@ Note that we called `plt.plot()` twice before calling `plt.show()`, which result
 
 ## Graph Types
 
-Below are five scenarios that demonstrate five different types of useful Graphs. In addition to the graph, axes are labeled and figures are titled.
+Below are five scenarios that demonstrate five different types of useful Graphs. 
 
 ### Line Plot {.unnumbered}
 
@@ -137,7 +137,7 @@ class_B = [9, 8, 10, 9, 10, 8, 9, 10, 6, 8, 9, 7, 8, 10, 9]
 
 plt.boxplot(
     [class_A, class_B],
-    labels=["Class A", "Class B"]
+    tick_labels = ["Class A", "Class B"]
 )
 
 plt.title('Quiz Score Distributions by Class')
@@ -161,19 +161,61 @@ It is not required that we break up the `boxplot` command onto different lines. 
 
 ## Exercises{.unnumbered}
 
-1. Graph the following data set as a scatter plot. On the same plot, draw an approximate best fit line to the data (note that this line will be an estimate, and you can draw a line between two $(x,y)$ coordinates).
+1. A cup of tea at 100$^\circ$C is left in a room at 22$^\circ$C. The temperature of the tea $T$ is recorded over $t$ minutes in the table below. Create a line plot of the tea data and be sure to label the axes.  
+
+	| t |  0   | 5  | 10  | 15  | 20  | 25  | 30  | 35   | 40   |
+	|---|------|----|-----|-----|-----|-----|-----|------|------|
+	| T | 100  | 86 | 74  | 66  | 57  | 51  | 45  | 42   | 38   |
+
+2. A science department had the following number of requests for each course: 
+	
+	- Biology: 128
+	- Chemistry: 97
+	- Computer Science: 72
+	- Physics: 101
+	- Zoology: 46
+
+	Use an appropriate chart to visualize the Science Department's course registration numbers. 
+
+3. Students earned the following scores on a final exam: 
+
+	```python 
+	  scores = [ 89, 94, 63, 96, 85, 63, 93, 70, 59, 54, 
+	             85, 64, 92, 49, 83, 83, 67, 66, 62, 97, 
+	             66, 66, 95, 46, 89, 98, 73, 94, 86, 88 ]
+	```
+
+	Create three histograms of the data using `bins=3`, `bins=5`, and `bins=11`. What is revealed as you increase the number of bins, and what questions does the score distribution raise? 
+
+4. Two species of birds live in the same area and look quite similar. A researcher has collected measurements of the wing span for both species in centimeters:
+
+	```python
+    species_A = [ 13.0, 15.4, 13.4, 13.9, 13.8, 15.2, 13.7, 14.5, 14.2, 
+                  12.1, 15.6, 13.5, 15.0, 13.2, 14.1, 14.7, 13.5, 13.7 ]
+
+    species_B = [ 15.7, 15.9, 16.7, 14.5, 15.5, 17.4, 15.1, 16.9, 17.8, 
+                  16.5, 14.7, 14.9, 16.1, 15.3, 17.6, 16.8, 14.3, 16.3, 
+                  15.1, 17.1, 15.3, 16.8 ]
+	```
+
+	- Create a histogram for each species on the same graph and include a legend. Use `alpha=0.6` so that you can be sure to see both distributions if they overlap. 
+	- Another researcher catches a bird with wing span 15.6 cm. Based on the data, which species do you predict this bird to be? 
+	- Create a numpy array of each species's data and print summary statistics ([@sec-numpy-statistics]). 
+	- Create a box plot for each species. 
+
+5. Graph the following data set as a scatter plot. On the same plot, draw an approximate best fit line to the data (note that this line will be an estimate, and you can draw a line between two $(x,y)$ coordinates).
 
 	| x |  0   | 1    | 2    | 3    | 4    | 5    | 6  | 7    | 8    | 9    |
 	|---|------|------|------|------|------|------|----|------|------|------|
 	| y | 12.5 | 13.1 | 13.2 | 13.2 | 13.8 | 14.1 | 15 | 14.8 | 14.9 | 15.1 |
 
-2. Perform a reflex test (or use previous data). Have one person place their hand at the edge of a table with their fingers out. A second person holds a ruler just above the first person's finger tips and lets go at a random time. Without moving their hand, the first person closes their fingers to stop the ruler. For each person,
+6. Perform a reflex test (or use previous data). Have one person place their hand at the edge of a table with their fingers out. A second person holds a ruler just above the first person's finger tips and lets go at a random time. Without moving their hand, the first person closes their fingers to stop the ruler. For each person,
     - Collect 12 samples of how far the ruler falls before it is caught. 
     - Put the data into a NumPy array. 
 	- Create a **histogram** for each person depicting the distribution of their reflex times.
 	- Create a **box plot** for each person depicting the distribution of their reflex times.  
 
-3. Consider a pendulum with mass $m$, length $L$, and release angle $\theta$. The **period** $T$ of a pendulum is the amount of time it takes to complete one cycle of motion, swinging from one side to the other and then back again. To model the period of a pendulum, we want to determine the effect that each of the variables $m$, $L$, and $\theta$ have on $T$. We can explore this experimentally by keeping two of the variables constant while changing the third and looking for changes in $T$.
+7. Consider a pendulum with mass $m$, length $L$, and release angle $\theta$. The **period** $T$ of a pendulum is the amount of time it takes to complete one cycle of motion, swinging from one side to the other and then back again. To model the period of a pendulum, we want to determine the effect that each of the variables $m$, $L$, and $\theta$ have on $T$. We can explore this experimentally by keeping two of the variables constant while changing the third and looking for changes in $T$.
 		![](img/pendulum_plots.png)
 
 
