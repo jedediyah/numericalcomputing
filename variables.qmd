@@ -33,7 +33,7 @@ The first line creates a variable called `a` and assigns it the value $-3$. The 
 
 Variables are particularly useful when plugging values into formulas. Consider Newton's law of universal gravitation, 
 $$ F = G \frac{m_{1} m_{2}}{r^{2}} $$
-where $F$ is the force of gravity between masses $m_{1}$ and $m_{2}$ separated by a distance $r$, and $G$ is Newton's constant of gravitation. Anyone who has plugged into this formula while taking physics knows how combersome of a calculation this can be, particularly when dealing with scientific notation on a calculator. Let's calculate the force of gravity between a mass of 32000 kg and a mass of 250000 kg that are separated by 50 meters. 
+where $F$ is the force of gravity between masses $m_{1}$ and $m_{2}$ separated by a distance $r$, and $G$ is Newton's constant of gravitation. Anyone who has plugged into this formula while taking physics knows how cumbersome of a calculation this can be, particularly when dealing with scientific notation on a calculator. Let's calculate the force of gravity between a mass of 32000 kg and a mass of 250000 kg that are separated by 50 meters. 
 ```{python}
 m1 = 32000
 m2 = 250000
@@ -135,7 +135,7 @@ We can prompt the user for input with the `input()` function. Even better, we ca
 user_name = input("Enter your name: ")
 print("Hello " + user_name)
 ```
-The first line accomplishes multiple things. It prints the string `"Enter your name: "`, waits for the user to type something and press [Enter], and finally stores the user's input in the variable called `user_name`. Then next line concatinates `"Hello "` with the user's input and the prints the result.
+The first line accomplishes multiple things. It prints the string `"Enter your name: "`, waits for the user to type something and press [Enter], and finally stores the user's input in the variable called `user_name`. Then next line concatenates `"Hello "` with the user's input and the prints the result.
 
 Something interesting happens if we prompt the user for a number. Try the following:
 ```python
@@ -157,7 +157,29 @@ Note that we converted the number `twice` back to a `str` to be able to concaten
     $$F_e = k \frac{q_1 q_2}{d^2}$$
     where $k = 9 \cdot 10^9$ is a constant. Using variables, calculate the force between a charge of 0.3 C separated by 345 m from a charge of 0.08 C. 
 
-2. A quadratic equation is one that can be written in the form: 
+2. Determine what each of the print statements below would print. Then afterwards, verify by running the code. 
+
+    ```python 
+    a = 5
+    b = a + 3
+    print( a )
+    print( b )
+
+    a = a + 1 
+    b = 0 
+    print( a ) 
+    print( a * b )
+    ```
+
+3. The `+` operator can mean different things. Determine what each print statement will print, and then verify by running the code. 
+    
+    ```python 
+    print( 6 + 7 ) 
+    print( "6" + "7" )
+    print( 6 + "7" )
+    ```
+
+4. A quadratic equation is one that can be written in the form: 
    $$ax^2 + bx + c = 0$$ 
    Recall that the solutions to a quadratic can be found with the *quadratic formula*: 
    $$x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$$ 
@@ -171,23 +193,28 @@ Note that we converted the number `twice` back to a `str` to be able to concaten
     f. $2x^2+20x+48$
     g. $5x^2+3x-9$
 
-3. Use the square root algorithm: $$g_{i+1} = \frac{g_i + \frac{n}{g_i}}{2}$$
-     with an initial guess of $g_0=10$, to find the approximation $g_5$ for the following values:
+5. Use the square root algorithm: $$g_{i+1} = \frac{g_i + \frac{n}{g_i}}{2}$$ with an initial guess of $g_0=10$, to find the approximation $g_5$ for the values below. How close are these approximations?
      a. $\sqrt{64}$
      b. $\sqrt{63}$
      c. $\sqrt{99}$
      d. $\sqrt{200}$
      e. $\sqrt{1000000}$
+
+6. The cube root of a number can be approximated using: 
+    $$g_{i+1} = \frac{2g_i + \frac{n}{g_i^{2}}}{3}$$
+    Use this formula with an initial guess of $g_0=5$ to approximate the cube root of $n=200$. Find $g_1$ through $g_5$. 
      
-4. Use the `input()` function to prompt the user for two numbers, `a` and `b`, then print out the product and ratio of those two numbers.
+6. Use the `input()` function to prompt the user for two numbers, `a` and `b`, then print out the product and ratio of those two numbers.
 
     *Hint*: The `input()` function returns a string, so you will have to convert that string to a float so it can be used in a calculation.
     
 
-5. Using the `input()` function,
+7. Using the `input()` function,
     a. prompt a user for a height in meters, then
     b. tell them how long it would take for a bowling ball to fall that far when dropped from rest.
 
     Recall from Physics that:
     $$\Delta x = v_{i} \Delta t + \frac{1}{2} a \Delta t^{2}$$
     where $\Delta x$ is displacement, $v_i$ is initial velocity, $\Delta t$ is the change in time, and $a$ is the acceleration.
+
+

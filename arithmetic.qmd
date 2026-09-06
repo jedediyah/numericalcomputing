@@ -2,7 +2,7 @@
 #| label: setup
 #| include: false
 
-from numpy import sin, cos, tan, sqrt, floor, ceil, pi, gcd
+from numpy import sin, cos, tan, sqrt, floor, ceil, pi, gcd, exp, log
 ```
 
 # Calculating
@@ -62,7 +62,7 @@ NameError: name 'x' is not defined
 24 + 
 ```
 
-Or this sloppy parethetical:
+Or this sloppy parenthetical:
 
 ```{python}
 #| error: true
@@ -71,7 +71,7 @@ Or this sloppy parethetical:
 
 Some mistakes won't result in an error at all and are harder to catch. This could include code with valid syntax that miscalculates, or commands that are out of order. When we start to write longer scripts we will explore debugging and good coding practices. 
 
-## Built-In Functions 
+## Built-In Functions {#sec-built-in-functions}
 
 Python has a handful of [built-in](https://docs.python.org/3/library/functions.html) mathematical functions. Some of those functions are:
 
@@ -107,9 +107,9 @@ Some examples of functions from the `numpy` library:
 | Exponential             | $e^{5.2}$              | `exp(5.2)`     |
 | Natural Log             | $\ln(17)$              | `log(17)`      |
 
-The NumPy `log` function returns the natural log. To obtain an alternative base logarith we can use log conversion. For example, $\log_{5}(32)$ can be evaluated in Python as `log(32)/log(5)`. 
+The NumPy `log` function returns the natural log. To obtain an alternative base logarithm we can use log conversion. For example, $\log_{5}(32)$ can be evaluated in Python as `log(32)/log(5)`. 
 
-### Importing NumPy
+### Importing NumPy {#sec-numpy-import}
 
 In later chapters, we won't import individual funcations as we did above. Instead, will import the entire NumPy library and then use dot notation. For example:
 ```{python}
@@ -147,9 +147,9 @@ Try writing and evaluating the expresion:
 $$\frac{3+\frac{7}{5}}{5+3}$$
 You should get $0.55$.
 
-## Numerical Error
+## Numerical Error {#sec-numerical-error}
 
-As mentioned in @sec-ieee754, calculating with a computer involves numerical error due in part to the way we represent numbers on a computer. This won't be an issue for us, but it is important to be aware of. Below is a demonstrations of floating-poing error. 
+As mentioned in @sec-ieee754, calculating with a computer involves numerical error due in part to the way we represent numbers on a computer. This won't be an issue for us, but it is important to be aware of. Below is a demonstration of floating-poing error. 
 
 ### Sine of $\pi$ {.unnumbered}
 
@@ -176,11 +176,11 @@ sqrt(n+1) - sqrt(n)
 That value shouldn't be zero, and the fact that it is means that we have **lost** information. 
 --> 
 
-Numerical error is a fascinating and important topic [@heath2018scientific], but from here on out we will completely ignore it. 
+Numerical error is a fascinating and important topic [@heath2018scientific], but after this chapter we will completely ignore it. 
 
 ## Exercises {.unnumbered}
 
-Write the following arithmetic expressions in Python and print the results.
+Write the following arithmetic expressions in Python and print the results. If it requires numpy, use the conventional import style described in @sec-numpy-import. 
 
 1. 
 
@@ -205,9 +205,77 @@ n. $$e^{\ln \left( \gcd(24,32) \right) }$$
 :::
 ::::
 
-2. Determine the types of error, if there are any, in the following expressions: 
-  a. `7 * 4 ** `
-  b. `34 / 0`
-  c. `((3+2)/(6-1))`
-  d. `print "Hi!"`
-  e. `x = 4y`
+2. Predict what each expression below produces before running it. For each one, state whether it produces a result, an error, or a result that is not what the author intended. Name the error type where there is one.
+
+:::: columns
+::: column
+a. `7 * 4 ** `
+b. `34 / 0`
+c. `((3+2)/(6-1))`
+d. `print "Hi!"`
+e. `x = 4y`
+f. `sqrt 16`
+:::
+::: column
+g. `3(4 + 2)`
+h. `"7" + 7`
+i. `7 % 0`
+j. `round(3.14159, 2)`
+k. `max(3, 7) - min(3, 7)`
+l. `pow(2, 0.5) - sqrt(2)`
+:::
+::::
+
+
+3. Evaluate each pair of expressions. For each pair, state whether the two
+   results agree, and if they do not, write the mathematical expression that
+   each one actually computes.
+
+    |    | First | Second |
+    | -- | ------------- | --------------- |
+    | a. | `6 + 4/2`     | `(6 + 4)/2`     |
+    | b. | `-3**2`       | `(-3)**2`       |
+    | c. | `2**3**2`     | `(2**3)**2`     |
+    | d. | `12/4/3`      | `12/(4/3)`      |
+    | e. | `1 - sin(0.3)**2` | `(1 - sin(0.3))**2` |
+
+
+5. Use built-in functions and numpy functions to complete the table below. The first row is completed for you. 
+
+    | $n$  | `round(n)` | `int(n)` | `np.floor(n)` | `np.ceil(n)` | 
+    |------|------------|----------|---------------|--------------|
+    | 3.14 | 3          | 3        | 3             | 4            |
+    | 2.9  |            |          |               |              |
+    | -2.9 |            |          |               |              |
+    | 0.5  |            |          |               |              |
+
+    For each value of $n$, explain why some functions "disagree". 
+
+6. A weather station records the following four temperatures in degrees
+   Celsius: $-4.2$, $6.8$, $1.5$, $-9.3$.
+
+    Using the built-in functions from @sec-built-in-functions, write an expression for
+    each of the following (do not compute any part of it by hand).
+
+    - The warmest temperature recorded.
+    - The difference between the warmest and the coldest.
+    - The largest temperature in absolute value, that is, the reading furthest
+      from freezing in either direction.
+
+7. Translate each of the following into a single Python expression and evaluate
+   it.
+
+    - The period of a pendulum of length $0.5$ m, given $T = 2\pi\sqrt{L/g}$ and $g = 9.81$.
+    - The length of the diagonal of a box measuring $3 \times 4 \times 12$.
+    - The area of a triangle with sides $7$, $8$, and $9$, using Heron's formula $A=\sqrt{s(s-a)(s-b)(s-c)}$, where $s$ is half the perimeter.
+
+
+10. @sec-numerical-error demonstrates the numerical error of `sin(pi)`. Consider the following expressions:
+
+    - `cos(pi/2)`
+    - `sqrt(2)**2 - 2`
+    - `0.1 + 0.2 - 0.3`
+    - `log(243)/log(3)`
+
+    For each expression, first determine the exact mathematical value, then evaluate each in Python and compare the result. 
+    What is the percent error in these calculations?     

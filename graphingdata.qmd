@@ -170,8 +170,8 @@ It is not required that we break up the `boxplot` command onto different lines. 
 2. A science department had the following number of requests for each course: 
 	
 	- Biology: 128
-	- Chemistry: 97
-	- Computer Science: 72
+	- Chemistry: 93
+	- Computer Science: 62
 	- Physics: 101
 	- Zoology: 46
 
@@ -200,7 +200,7 @@ It is not required that we break up the `boxplot` command onto different lines. 
 
 	- Create a histogram for each species on the same graph and include a legend. Use `alpha=0.6` so that you can be sure to see both distributions if they overlap. 
 	- Another researcher catches a bird with wing span 15.6 cm. Based on the data, which species do you predict this bird to be? 
-	- Create a numpy array of each species's data and print summary statistics ([@sec-numpy-statistics]). 
+	- Create a numpy array of each species' data and print summary statistics ([@sec-numpy-statistics]). 
 	- Create a box plot for each species. 
 
 5. Graph the following data set as a scatter plot. On the same plot, draw an approximate best fit line to the data (note that this line will be an estimate, and you can draw a line between two $(x,y)$ coordinates).
@@ -209,13 +209,28 @@ It is not required that we break up the `boxplot` command onto different lines. 
 	|---|------|------|------|------|------|------|----|------|------|------|
 	| y | 12.5 | 13.1 | 13.2 | 13.2 | 13.8 | 14.1 | 15 | 14.8 | 14.9 | 15.1 |
 
-6. Perform a reflex test (or use previous data). Have one person place their hand at the edge of a table with their fingers out. A second person holds a ruler just above the first person's finger tips and lets go at a random time. Without moving their hand, the first person closes their fingers to stop the ruler. For each person,
+6. The square root of a number $n$ can be approximated as described in @sec-variterate, starting with an initial guess $g_0$ and iterating the formula: 
+	$$ g_{i+1} = \frac{g_i + \frac{n}{g_i}}{2} $$	
+	- Complete the table of $g_i$ for approximating the square root of $1000$, starting with an initial guess of $g_0 = 250$, including the approximation error $|\sqrt{1000} - g_i|$ up through $g_6$. 
+	- Create a line plot of the error and discuss your observations of the plot.  
+
+	| $i$ | $g_{i}$ | error             |
+	|-----|---------|-------------------|
+	| 0   | 250     | 218.3772233983162 | 
+	| 1   |         |                   | 
+	| 2   |         |                   | 
+	| 3   |         |                   | 
+	| 4   |         |                   | 
+	| 5   |         |                   | 
+	| 6   |         |                   | 
+
+7. Perform a reflex test (or use previous data). Have one person place their hand at the edge of a table with their fingers out. A second person holds a ruler just above the first person's finger tips and lets go at a random time. Without moving their hand, the first person closes their fingers to stop the ruler. For each person,
     - Collect 12 samples of how far the ruler falls before it is caught. 
     - Put the data into a NumPy array. 
 	- Create a **histogram** for each person depicting the distribution of their reflex times.
 	- Create a **box plot** for each person depicting the distribution of their reflex times.  
 
-7. Consider a pendulum with mass $m$, length $L$, and release angle $\theta$. The **period** $T$ of a pendulum is the amount of time it takes to complete one cycle of motion, swinging from one side to the other and then back again. To model the period of a pendulum, we want to determine the effect that each of the variables $m$, $L$, and $\theta$ have on $T$. We can explore this experimentally by keeping two of the variables constant while changing the third and looking for changes in $T$.
+8. Consider a pendulum with mass $m$, length $L$, and release angle $\theta$. The **period** $T$ of a pendulum is the amount of time it takes to complete one cycle of motion, swinging from one side to the other and then back again. To model the period of a pendulum, we want to determine the effect that each of the variables $m$, $L$, and $\theta$ have on $T$. We can explore this experimentally by keeping two of the variables constant while changing the third and looking for changes in $T$.
 		![](img/pendulum_plots.png)
 
 

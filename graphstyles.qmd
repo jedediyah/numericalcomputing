@@ -6,7 +6,7 @@ There is a tremendous amount of customization that can be done with PyPlot graph
 
 ### Marker
 
-The most important customizations is the `marker`, but we can additionally set the colors and size: 
+The plot below sets the type of marker as well as some commonly used attributes. 
 ```{python}
 import matplotlib.pyplot as plt
 
@@ -38,7 +38,7 @@ Some additional marker types include:
 
 ### Line 
 
-The main line customizations include which type of line, and what color to draw it with. 
+The main customizations for a line include the line style and color. 
 ```{python}
 x = [1, 2, 3, 4]
 y = [2, 4, 3, 5]
@@ -73,6 +73,18 @@ plt.plot(x, y, 'ks--')   # Black, square marker, dashed line
 plt.show()
 ```
 
+Some colors include: 
+
+| Color   | Code  |
+| ------- | ----- |
+| Blue    | `'b'` |
+| Green   | `'g'` |
+| Red     | `'r'` |
+| Cyan    | `'c'` |
+| Magenta | `'m'` |
+| Yellow  | `'y'` |
+| Black   | `'k'` |
+
 The matplotlib documentation offers several nice [cheat-sheets](https://matplotlib.org/cheatsheets/) that can be printed. 
 
 
@@ -84,7 +96,7 @@ The matplotlib documentation offers several nice [cheat-sheets](https://matplotl
 | Label $y$ axis  | `plt.ylabel('Y')`                | 
 | Title a graph   | `plt.title('My Plot')`           | 
 | Plot and label  | `plt.plot(x,y,label='series1')`  | 
-| Turn on legend  | `plt.xlabel('X')`                | 
+| Turn on legend  | `plt.legend()`                | 
 | Turn on grid    | `plt.grid()`                     | 
 
 ## Exercises{.unnumbered}
@@ -108,7 +120,11 @@ The matplotlib documentation offers several nice [cheat-sheets](https://matplotl
 	- Create a **histogram** for each person depicting the distribution of their reflex times.
 	- Create a **box plot** for each person depicting the distribution of their reflex times.  
 
-4. Consider a pendulum with mass $m$, length $L$, and release angle $\theta$. The **period** $T$ of a pendulum is the amount of time it takes to complete one cycle of motion, swinging from one side to the other and then back again. To model the period of a pendulum, we want to determine the effect that each of the variables $m$, $L$, and $\theta$ have on $T$. We can explore this experimentally by keeping two of the variables constant while changing the third and looking for changes in $T$.
-		![](img/pendulum_plots.png)
+4. Consider a pendulum with mass $m$, length $L$, and release angle $\theta$. The **period** $T$ of a pendulum is the amount of time it takes to complete one cycle of motion, swinging from one side to the other and then back again. To model the period of a pendulum, we want to determine the effect that each of the variables $m$, $L$, and $\theta$ have on $T$. We can explore this experimentally by keeping two of the variables constant while changing the third and looking for changes in $T$. 
+
+	- Collect data to populate the following plots:
+
+	![](img/pendulum_plots.png)
+	- Based on your plots, describe the relationship between period $T$ and each of the features: mass, length, and release angle. 
 
 
