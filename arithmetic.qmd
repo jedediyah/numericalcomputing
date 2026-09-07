@@ -149,7 +149,7 @@ You should get $0.55$.
 
 ## Numerical Error {#sec-numerical-error}
 
-As mentioned in @sec-ieee754, calculating with a computer involves numerical error due in part to the way we represent numbers on a computer. This won't be an issue for us, but it is important to be aware of. Below is a demonstration of floating-poing error. 
+As mentioned in the introduction, calculating with a computer involves numerical error due in part to the way we represent numbers on a computer. This won't be an issue for us, but it is important to be aware of. Below is a demonstration of floating-poing error. 
 
 ### Sine of $\pi$ {.unnumbered}
 

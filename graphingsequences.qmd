@@ -59,8 +59,8 @@ plt.plot(x, y)
 Which leads to some observations: 
 
 1. The infinite discontinuities don't seem to actually go to infinity here. 
-2. Even though they don't go to infinity, they go far, which stretches the window in the $y$ direction 
-3. The dicontinuities are connected when they shouldn't be. 
+2. Even though they don't go to infinity, they go far, which stretches the window in the $y$ direction.
+3. The discontinuities are connected when they shouldn't be. 
 
 For observation 1., we aren't evaluating $\tan$ at exactly $\frac{\pi}{2}$, and we aren't getting a $y$ "value" of $\infty$. 
 
@@ -187,10 +187,22 @@ plt.show()
 
 ## Exercises{.unnumbered}
 
-1. Plot the following functions over the interval $-10 \leq x \leq 10$.
-    a. 
+1. Plot each of the following functions over the interval $-10 \leq x \leq 10$.
+    a. $\quad x^3 - 3x$
+    b. $\quad \frac{1}{1+x^2}$
+    c. $\quad x \sin(x)$
+    d. $\quad \frac{1}{x-2}$
+    e. $\quad |x+3|$
+    f. $\quad \cos(x) + x/3$
 
-2. The function $f(x)=\frac{1}{x}$ is undefined at $x=0$. When we graph this function from $-1$ to $1$, we don't always get an error. For example, 
+2. Plot $f(x)=x^2$ on the interval $[-4,4]$. Plot each of the following on the same graph but in a different line style (and / or color), and describe how each differs geometrically from $f(x)$:
+    a. $\quad (x-2)^2$
+    b. $\quad x^2 - 2$
+    c. $\quad x^2 + 3$
+    d. $\quad 2x^2$ 
+    e. $\quad -x^2$
+
+3. The function $f(x)=\frac{1}{x}$ is undefined at $x=0$. When we graph this function from $-1$ to $1$, we don't always get an error. For example, 
    ```python
    x = np.linspace(-1,1,50)
    y = 1/x 
@@ -206,15 +218,22 @@ plt.show()
    ``` 
    Explain why undefined functions might sometimes run into warnings and sometimes not. 
 
-3. Graph the functions $\sin$, $\cos$, and $\tan$ on the same plot. Be sure that your plot has reasonable bounds so the functions can be clearly viewed (don't let the vertical asymptotes of $\tan$ dominate the vertical zoom).
+4. Graph the functions $\sin$, $\cos$, and $\tan$ on the same plot. Be sure that your plot has reasonable bounds so the functions can be clearly viewed (don't let the vertical asymptotes of $\tan$ dominate the vertical zoom).
 
-4. The function $$f(x)=\sin\left(\frac{1}{x}\right)$$ has some interesting behavior around $x=0$. Create graphs of $f(x)$ on the interval $[-1,1]$ using 10, 100, 1000, 10000 points. How many points is enough?
+5. Under-sampling can dramatically distort our perception of a function. Plot $f(x)=\sin(2\pi x)$ on $[0, 10]$ using:
+    a. 11 points 
+    b. 20 points 
+    c. 1000 points 
 
-5. Recreate the following graphs as closely as you can:
+    Describe each plot and why it is important to use enough samples when inspecting a function. 
+
+6. The function $$f(x)=\sin\left(\frac{1}{x}\right)$$ has some interesting behavior around $x=0$. Create graphs of $f(x)$ on the interval $[-1,1]$ using 10, 100, 1000, 10000 points. How many points is enough?
+
+7. Recreate the following graphs as closely as you can:
 
 ![Graph](img/plot_goal1.png){width=45%} 
 ![Graph](img/plot_goal2.png){width=45%}
 ![Graph](img/linregression.png){width=45%}
 ![Graph](img/intstairs.png){width=45%}
 
-6. The solution to $$\cos(x) = x$$ cannot be found algebraically. However, we can search for an approximate solution by inspecting the graph where $y=\cos(x)$ intersects $y=x$. Plot these two functions and use `plt.xlim` and `plt.ylim` to "zoom" on any points of intersection to estimate their $(x,y)$ coordinate.
+8. The solution to $$\cos(x) = x$$ cannot be found algebraically. However, we can search for an approximate solution by inspecting the graph where $y=\cos(x)$ intersects $y=x$. Plot these two functions and use `plt.xlim` and `plt.ylim` to "zoom" on any points of intersection to estimate their $(x,y)$ coordinate.

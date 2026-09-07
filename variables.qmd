@@ -185,31 +185,38 @@ Note that we converted the number `twice` back to a `str` to be able to concaten
    $$x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$$ 
    Write a script to find the two solutions for the following quadratics, or explain why there is a problem or error.
 
-    a. $x^2-x-6$
-    b. $x^2+14x+45$
-    c. $x^2+2$
-    d. $x^2-5$ 
-    e. $x^2+4x+4$
-    f. $2x^2+20x+48$
-    g. $5x^2+3x-9$
+    a. $\quad x^2-x-6$
+    b. $\quad x^2+14x+45$
+    c. $\quad x^2+2$
+    d. $\quad x^2-5$ 
+    e. $\quad x^2+4x+4$
+    f. $\quad 2x^2+20x+48$
+    g. $\quad 5x^2+3x-9$
 
 5. Use the square root algorithm: $$g_{i+1} = \frac{g_i + \frac{n}{g_i}}{2}$$ with an initial guess of $g_0=10$, to find the approximation $g_5$ for the values below. How close are these approximations?
-     a. $\sqrt{64}$
-     b. $\sqrt{63}$
-     c. $\sqrt{99}$
-     d. $\sqrt{200}$
-     e. $\sqrt{1000000}$
+     a. $\quad \sqrt{64}$
+     b. $\quad \sqrt{63}$
+     c. $\quad \sqrt{99}$
+     d. $\quad \sqrt{200}$
+     e. $\quad \sqrt{1000000}$
 
 6. The cube root of a number can be approximated using: 
     $$g_{i+1} = \frac{2g_i + \frac{n}{g_i^{2}}}{3}$$
-    Use this formula with an initial guess of $g_0=5$ to approximate the cube root of $n=200$. Find $g_1$ through $g_5$. 
+    Use this formula with an initial guess of $g_0=5$ to approximate the cube root of $n=200$, finding $g_1$ through $g_5$. 
+
+7. Identify the `type` of each variable below, then afterwards verify your answers by running the code. 
+    a. `a = 5 * 4`
+    b. `b = 5 / 4`
+    c. `c = 5 * 4.0`
+    d. `d = "3200"`
+    e. `e = 20 / 5`
      
-6. Use the `input()` function to prompt the user for two numbers, `a` and `b`, then print out the product and ratio of those two numbers.
+8. Use the `input()` function to prompt the user for two numbers, `a` and `b`, then print out the product and ratio of those two numbers.
 
     *Hint*: The `input()` function returns a string, so you will have to convert that string to a float so it can be used in a calculation.
     
 
-7. Using the `input()` function,
+9. Using the `input()` function,
     a. prompt a user for a height in meters, then
     b. tell them how long it would take for a bowling ball to fall that far when dropped from rest.
 
